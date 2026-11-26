@@ -14,6 +14,14 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px;height:100%}
 body{margin:0;background:var(--bg);color:var(--on);font:400 16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0)}
+body.reading-mode{font-family:Arial,Verdana,sans-serif;line-height:1.85;letter-spacing:.015em}
+body.reading-mode p,body.reading-mode li,body.reading-mode .quiz-answer{line-height:1.9;max-width:68ch}
+body.reading-mode .quiz-answer{padding:10px;border-radius:12px;background:var(--s2)}
+body.reading-mode button,body.reading-mode .btn{min-height:44px}
+body.focus-mode .bar,body.focus-mode .detail-toolbar,body.focus-mode footer,body.focus-mode .home-dashboard,body.focus-mode .study-access-tools{display:none!important}
+.focus-exit{position:fixed;top:12px;right:12px;z-index:30}
+.focus-exit[hidden]{display:none}
+body[data-view="inicio"] .study-access-tools{display:none}
 a{color:var(--p)}
 :focus-visible{outline:3px solid var(--t);outline-offset:2px}
 .skip-link{position:absolute;left:12px;top:-60px;z-index:20;padding:10px 16px;border-radius:999px;background:var(--p);color:var(--onp);font-weight:700}
@@ -226,6 +234,22 @@ body[data-view="inicio"] #top-link{display:none}
 .quiz-answer{display:block;padding:5px 0;color:var(--var)}
 .quiz-answer input{accent-color:var(--p)}
 .quiz-result{min-height:1.5em;margin:10px 0 0;font-weight:700}
+.study-access-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:16px 0;padding:16px;border:1px solid var(--s3);border-radius:20px;background:var(--s2)}
+.study-access-copy{display:grid;gap:3px;max-width:48ch}
+.study-access-copy span,.study-tool-status{color:var(--var);font-size:.9rem}
+.study-access-buttons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.study-access-buttons button,.quiz-nav button{padding:9px 14px;border:1px solid var(--out);border-radius:999px;background:var(--s1);color:var(--on);font:inherit;cursor:pointer}
+.study-access-buttons button[aria-pressed="true"]{background:var(--pc);color:var(--opc)}
+.study-tool-status{flex-basis:100%;margin:0}
+.quiz-flow-panel{margin-top:12px}
+.quiz-flow-progress{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;color:var(--var);font-size:.9rem}
+.quiz-flow-track{height:8px;overflow:hidden;border-radius:99px;background:var(--s3)}
+.quiz-flow-track span{display:block;width:0;height:100%;background:var(--p);transition:width .18s}
+.quiz-flow-question{min-height:210px}
+.quiz-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.quiz-answer input{width:18px;height:18px;margin:0 9px 0 0;vertical-align:middle}
+.quiz-answer{min-height:44px;display:flex;align-items:center;gap:4px;padding:8px;color:var(--var);cursor:pointer}
+.quiz-feedback{padding:10px 12px;border-radius:12px;background:var(--s2)}
 .study-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0 18px}
 .study-controls label{font-weight:700}
 .study-controls select{width:auto;min-width:220px}
@@ -278,6 +302,17 @@ body[data-view="inicio"] #top-link{display:none}
 <div class="home-about"><div><h2>Una biblioteca para aprender con responsabilidad</h2><p>FOXSEC reúne rutas, herramientas, recursos, certificaciones y referencias para que avances paso a paso. Practica siempre en entornos autorizados.</p></div><a class="btn" href="#about">Conoce el proyecto</a></div>
 </div>
 <div class="detail-toolbar" id="detail-toolbar"><a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Volver al inicio</a><span class="detail-context" id="detail-context" aria-live="polite"></span></div>
+<div class="study-access-tools" aria-label="Ajustes de lectura y concentración">
+<div class="study-access-copy"><strong>Estudia a tu manera</strong><span>Prueba el espaciado, el tamaño de letra, la lectura en voz alta o el modo enfoque. Estos apoyos pueden ayudar a algunas personas con TDAH o dislexia; ajusta lo que te resulte cómodo.</span></div>
+<div class="study-access-buttons">
+<button id="reading-mode-toggle" type="button" aria-pressed="false">Lectura cómoda</button>
+<button id="font-smaller" type="button" aria-label="Reducir tamaño del texto">A−</button><output id="font-size-label" aria-live="polite">16 px</output><button id="font-larger" type="button" aria-label="Aumentar tamaño del texto">A+</button>
+<button id="focus-mode-toggle" type="button" aria-pressed="false">Modo enfoque</button>
+<button id="read-summary" type="button">Escuchar resumen</button><button id="stop-summary" type="button" hidden>Detener audio</button>
+</div>
+<p id="study-tool-status" class="study-tool-status" aria-live="polite">Puedes cambiar estos ajustes cuando quieras.</p>
+</div>
+<button id="focus-exit" class="btn focus-exit" type="button" hidden>Salir del modo enfoque</button>
 
 <section id="ruta" class="detail-section"><h2>Ruta de aprendizaje</h2><p class="lead">Sigue el orden. Sesiones cortas y constantes rinden más que una maratón.</p><div class="grid steps" id="ruta-l"></div></section>
 
@@ -292,7 +327,7 @@ body[data-view="inicio"] #top-link{display:none}
 <h3 style="margin:28px 0 10px">Plan semana por semana</h3><div class="card wrap"><table><thead><tr><th>Semana</th><th>Tema</th><th>Práctica</th></tr></thead><tbody id="plan"></tbody></table></div>
 <h3 style="margin:28px 0 10px">Repaso espaciado</h3><div class="chips" id="rep"></div></section>
 
-<section id="curso" class="detail-section"><h2>Curso: fundamentos a práctica avanzada</h2><p class="lead">Programa organizado en los 10 módulos que compartiste. Marca lecciones completadas, responde al menos 30 preguntas por módulo y completa el examen final de 50 preguntas. El progreso se guarda en este dispositivo.</p>
+<section id="curso" class="detail-section"><h2>Curso: fundamentos a práctica avanzada</h2><p class="lead">Programa organizado en los 10 módulos que compartiste. Marca lecciones completadas, responde al menos 30 preguntas por módulo y completa el examen final de 50 preguntas. Avanza una pregunta a la vez, vuelve atrás si necesitas cambiar una respuesta y usa los ajustes de lectura cuando quieras.</p>
 <p class="study-note"><b>Alcance del contenido:</b> los nombres de lecciones de los módulos 2–10 se conservan según tu lista. El módulo 1 no incluía los seis títulos; aquí se muestran seis propuestas de fundamentos, no títulos oficiales. Los quizzes son de práctica, no exámenes de certificación.</p>
 <div class="study-controls"><label for="course-filter">Mostrar:</label><select id="course-filter"><option value="all">Todos los módulos</option><option value="required">Módulos principales</option><option value="optional">Módulos complementarios</option></select><span id="course-progress-text" class="module-progress" aria-live="polite"></span></div>
 <div class="study-progress" role="progressbar" aria-label="Progreso general del curso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="course-progress-bar"></span></div>
@@ -632,6 +667,22 @@ function loadCatalogs(){
   ["tool-catalog","glossary-catalog"].forEach(function(id){var host=$(id);host.replaceChildren(textNode("p","No se pudo cargar este catálogo. Comprueba tu conexión y recarga la página.","empty-state"))})
  })
 }
+function initStudyAccessibility(){
+ var root=document.documentElement,body=document.body,reading=$("reading-mode-toggle"),smaller=$("font-smaller"),larger=$("font-larger"),fontLabel=$("font-size-label"),focus=$("focus-mode-toggle"),exit=$("focus-exit"),read=$("read-summary"),stop=$("stop-summary"),status=$("study-tool-status"),fontSize=16;
+ function setFontSize(next){fontSize=Math.max(16,Math.min(24,next));root.style.fontSize=fontSize+"px";fontLabel.textContent=fontSize+" px"}
+ smaller.addEventListener("click",function(){setFontSize(fontSize-1)});
+ larger.addEventListener("click",function(){setFontSize(fontSize+1)});
+ reading.addEventListener("click",function(){var active=body.classList.toggle("reading-mode");reading.setAttribute("aria-pressed",String(active));if(active&&fontSize===16)setFontSize(18);status.textContent=active?"Lectura cómoda activada. Puedes cambiar el tamaño de letra con A− y A+.":"Lectura cómoda desactivada."});
+ function setFocus(active){body.classList.toggle("focus-mode",active);focus.setAttribute("aria-pressed",String(active));exit.hidden=!active;status.textContent=active?"Modo enfoque activado. El contenido actual queda en primer plano.":"Modo enfoque desactivado."}
+ focus.addEventListener("click",function(){var active=!body.classList.contains("focus-mode");setFocus(active);if(active)exit.focus()});
+ exit.addEventListener("click",function(){setFocus(false);focus.focus()});
+ document.addEventListener("keydown",function(event){if(event.key==="Escape"&&body.classList.contains("focus-mode")){setFocus(false);focus.focus()}});
+ if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){read.disabled=true;read.title="La lectura en voz alta no está disponible en este navegador.";status.textContent="La lectura en voz alta depende de las funciones de tu navegador."}
+ else{
+  read.addEventListener("click",function(){var active=document.querySelector(".detail-section.active"),title=active&&active.querySelector("h2"),lead=active&&active.querySelector(".lead"),text=[title&&title.textContent,lead&&lead.textContent].filter(Boolean).join(". ");if(!text){status.textContent="No hay un resumen disponible en esta sección.";return}window.speechSynthesis.cancel();var utterance=new SpeechSynthesisUtterance(text);utterance.lang="es-ES";utterance.onstart=function(){stop.hidden=false;status.textContent="Leyendo el resumen de la sección."};utterance.onend=function(){stop.hidden=true;status.textContent="Lectura finalizada."};utterance.onerror=function(){stop.hidden=true;status.textContent="No se pudo reproducir el audio. Puedes probar la lectura en voz alta de tu navegador."};window.speechSynthesis.speak(utterance)});
+  stop.addEventListener("click",function(){window.speechSynthesis.cancel();stop.hidden=true;status.textContent="Lectura detenida."})
+ }
+}
 function initCourse(){
  var host=$("course-modules"),filter=$("course-filter"),status=textNode("span","","module-progress"),progress={lessons:{},scores:{}},storageAvailable=true;
  var statusId="course-storage-status";status.id=statusId;$("course-progress-text").after(status);
@@ -642,21 +693,51 @@ function initCourse(){
   var lessons=modules.reduce(function(total,m){return total+m.lessons.length},0),done=modules.reduce(function(total,m){return total+m.lessons.filter(function(_,i){return progress.lessons[m.number+"-"+i]}).length},0),percent=lessons?Math.round(done*100/lessons):0;
   $("course-progress-text").textContent=done+" de "+lessons+" lecciones completadas";$("course-progress-bar").style.width=percent+"%";document.querySelector('[aria-label="Progreso general del curso"]').setAttribute("aria-valuenow",percent)
  }
+ function shuffled(items){var copy=items.slice();for(var i=copy.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=copy[i];copy[i]=copy[j];copy[j]=temp}return copy}
+ function createQuestionFlow(config){
+  var root=document.createElement("div"),start=textNode("button",config.startLabel||"Comenzar");root.className="quiz-flow";start.type="button";start.className="btn";
+  var panel=document.createElement("div");panel.className="quiz-flow-panel";panel.hidden=true;
+  var progressLine=document.createElement("div");progressLine.className="quiz-flow-progress";progressLine.setAttribute("aria-live","polite");progressLine.setAttribute("aria-atomic","true");var stepLabel=textNode("span","");var answeredLabel=textNode("span","");
+  var track=document.createElement("div");track.className="quiz-flow-track";track.setAttribute("role","progressbar");track.setAttribute("aria-label","Progreso de preguntas");track.setAttribute("aria-valuemin","0");track.setAttribute("aria-valuemax","100");var fill=document.createElement("span");track.appendChild(fill);progressLine.append(stepLabel,answeredLabel);
+  var field=document.createElement("fieldset");field.className="quiz-flow-question";var nav=document.createElement("div");nav.className="quiz-nav";
+  var previous=textNode("button","Anterior"),next=textNode("button","Siguiente"),grade=textNode("button","Calificar");[previous,next,grade].forEach(function(button){button.type="button"});
+  var listen=null;if(window.speechSynthesis&&window.SpeechSynthesisUtterance){listen=textNode("button","Escuchar pregunta");listen.type="button";listen.addEventListener("click",function(){if(window.speechSynthesis.speaking){window.speechSynthesis.cancel();listen.textContent="Escuchar pregunta";return}var item=questions[current];var text=item.question+". "+item.options.map(function(option,index){return "Opción "+(index+1)+": "+option}).join(". ");var utterance=new SpeechSynthesisUtterance(text);utterance.lang="es-ES";utterance.onend=function(){listen.textContent="Escuchar pregunta"};utterance.onerror=function(){listen.textContent="Escuchar pregunta"};listen.textContent="Detener audio";window.speechSynthesis.speak(utterance)})}
+  nav.append(previous,next);if(listen)nav.appendChild(listen);nav.appendChild(grade);
+  var result=textNode("p","","quiz-result");result.setAttribute("aria-live","polite");panel.append(progressLine,track,field,nav,result);root.append(start,panel);
+  var questions=[],answers=[],current=0,graded=false;
+  function draw(){
+   var item=questions[current],answered=answers.filter(function(answer){return answer!==null}).length;
+   stepLabel.textContent="Pregunta "+(current+1)+" de "+questions.length;answeredLabel.textContent=" · Respondidas: "+answered;
+   var percent=Math.round((current+1)*100/questions.length);track.setAttribute("aria-valuenow",String(percent));fill.style.width=percent+"%";
+   field.replaceChildren(textNode("legend",(current+1)+". "+(item.module?"["+item.module+"] ":"")+item.question));
+   item.options.forEach(function(option,index){var label=textNode("label","","quiz-answer"),radio=document.createElement("input");radio.type="radio";radio.name=config.id+"-"+current;radio.value=index;radio.checked=answers[current]===index;radio.disabled=graded;label.append(radio,document.createTextNode(String.fromCharCode(65+index)+". "+option));field.appendChild(label);radio.addEventListener("change",function(){answers[current]=index;answeredLabel.textContent=" · Respondidas: "+answers.filter(function(answer){return answer!==null}).length})});
+   previous.disabled=current===0;next.hidden=current===questions.length-1;grade.hidden=current!==questions.length-1;
+   if(graded){var selected=answers[current],correct=selected===item.answer,feedback=selected===null?"Sin responder. ":"";feedback+=correct?"¡Correcto! ":selected===null?"":"Respuesta correcta: ";if(!correct)feedback+=item.options[item.answer]+".";field.appendChild(textNode("p",feedback+(item.explanation?" "+item.explanation:""),"quiz-feedback"));grade.hidden=false;grade.textContent="Reiniciar"}
+   else grade.textContent="Calificar"
+  }
+  function begin(){
+   questions=typeof config.getQuestions==="function"?config.getQuestions():config.questions.slice();
+   if(!questions.length){result.textContent="No hay preguntas disponibles.";return}
+   answers=new Array(questions.length).fill(null);current=0;graded=false;result.textContent="";start.hidden=true;panel.hidden=false;draw()
+  }
+  previous.addEventListener("click",function(){if(current>0){current--;draw()}});
+  next.addEventListener("click",function(){if(current<questions.length-1){current++;draw()}});
+  grade.addEventListener("click",function(){
+   if(graded){start.hidden=false;panel.hidden=true;current=0;answers=[];graded=false;result.textContent="";start.textContent="Reintentar";return}
+   var correct=0,answered=0;questions.forEach(function(question,index){if(answers[index]!==null){answered++;if(answers[index]===question.answer)correct++}});
+   graded=true;if(config.onGrade)config.onGrade(correct,answered,questions.length);result.textContent=config.resultText?config.resultText(correct,answered,questions.length):"Resultado: "+correct+"/"+questions.length+". Respondidas: "+answered+"/"+questions.length+".";draw()
+  });
+  start.addEventListener("click",begin);
+  return root
+ }
  function renderFinalExam(modules){
-  var exam=$("course-final"),questions=[];
-  exam.replaceChildren(textNode("h3","Examen final de módulos · 50 preguntas"),textNode("p","En cada intento se seleccionan cinco preguntas al azar de cada módulo. Es una autoevaluación educativa, no un examen oficial ni una credencial."));
-  var start=textNode("button","Iniciar examen");start.type="button";start.className="btn";exam.appendChild(start);
-  var form=document.createElement("div");form.hidden=true;var result=textNode("p","","quiz-result");result.setAttribute("aria-live","polite");exam.append(form,result);
-  if(progress.scores.final&&progress.scores.final.total===50)result.textContent="Último resultado guardado: "+progress.scores.final.correct+"/"+progress.scores.final.total+".";
-  start.addEventListener("click",function(){
-   var pools=modules.map(function(module){var pool=module.quiz.slice();for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=pool[i];pool[i]=pool[j];pool[j]=temp}return pool.map(function(question){return {module:module.title,question:question}})});
-   questions=[];var round=0,added=0;
+  var exam=$("course-final");exam.replaceChildren(textNode("h3","Examen final de módulos · 50 preguntas"),textNode("p","Cinco preguntas al azar por módulo. Responde una por vez; puedes volver atrás antes de calificar. No es un examen oficial ni una credencial."));
+  var flow=createQuestionFlow({id:"final",startLabel:"Iniciar examen",getQuestions:function(){
+   var pools=modules.map(function(module){return shuffled(module.quiz).map(function(question){return {module:module.title,question:question.question,options:question.options,answer:question.answer,explanation:question.explanation}})}),questions=[],round=0,added=0;
    do{added=0;pools.forEach(function(pool){if(round<pool.length&&questions.length<50){questions.push(pool[round]);added++}});round++}while(questions.length<50&&added);
-   if(questions.length!==50){result.textContent="No hay suficientes preguntas para iniciar el examen. Recarga el curso o avisa para revisar el banco.";return}
-   form.replaceChildren();questions.forEach(function(item,index){var field=document.createElement("fieldset");field.appendChild(textNode("legend",(index+1)+". ["+item.module+"] "+item.question.question));item.question.options.forEach(function(option,optionIndex){var label=textNode("label","","quiz-answer"),radio=document.createElement("input");radio.type="radio";radio.name="final-"+index;radio.value=optionIndex;label.append(radio,document.createTextNode(" "+option));field.appendChild(label)});form.appendChild(field)});
-   var submit=textNode("button","Calificar examen");submit.type="button";submit.className="btn";form.appendChild(submit);form.hidden=false;result.textContent="";
-   submit.addEventListener("click",function(){var correct=0,answered=0;Array.prototype.forEach.call(form.querySelectorAll("fieldset"),function(field,index){var selected=field.querySelector("input:checked");if(selected){answered++;if(Number(selected.value)===questions[index].question.answer)correct++}});var percent=Math.round(correct*100/questions.length);result.textContent="Resultado: "+correct+"/"+questions.length+" ("+percent+"%). "+(percent>=80?"Meta de práctica alcanzada.":"Repasa los módulos con errores y vuelve a intentarlo.")+" Respondidas: "+answered+"/"+questions.length+".";progress.scores.final={correct:correct,total:questions.length};save()})
-  })
+   return questions
+  },onGrade:function(correct,answered,total){progress.scores.final={correct:correct,total:total};save()},resultText:function(correct,answered,total){var percent=Math.round(correct*100/total);return "Resultado: "+correct+"/"+total+" ("+percent+"%). "+(percent>=80?"Meta de práctica alcanzada.":"Repasa las preguntas y vuelve a intentarlo.")+" Respondidas: "+answered+"/"+total+"."}});
+  exam.appendChild(flow);var result=flow.querySelector(".quiz-result");if(progress.scores.final&&progress.scores.final.total===50)result.textContent="Último resultado guardado: "+progress.scores.final.correct+"/50.";
  }
  function render(modules){
   host.replaceChildren();var mode=filter.value;var shown=modules.filter(function(m){return mode==="all"||(mode==="required"&&m.required)||(mode==="optional"&&!m.required)});
@@ -669,18 +750,10 @@ function initCourse(){
     input.addEventListener("change",function(){progress.lessons[key]=input.checked;save();var complete=module.lessons.filter(function(_,index){return progress.lessons[module.number+"-"+index]}).length;count.textContent=complete+"/"+module.lessons.length+" lecciones";updateProgress(modules)})
    });
    details.appendChild(list);
-   var quiz=document.createElement("div");quiz.className="quiz-box";quiz.appendChild(textNode("h4","Quiz de práctica · "+module.quiz.length+" preguntas"));var result=textNode("p","","quiz-result");result.setAttribute("aria-live","polite");var submit=textNode("button","Calificar quiz");submit.type="button";submit.className="btn";
-   module.quiz.forEach(function(question,qi){
-    var field=document.createElement("fieldset");field.appendChild(textNode("legend",(qi+1)+". "+question.question));
-    question.options.forEach(function(option,oi){var label=textNode("label","","quiz-answer"),radio=document.createElement("input");radio.type="radio";radio.name="quiz-"+module.number+"-"+qi;radio.value=oi;label.append(radio,document.createTextNode(" "+option));field.appendChild(label)});quiz.appendChild(field)
-   });
-   quiz.append(submit,result);details.appendChild(quiz);
-   if(progress.scores[module.number]&&progress.scores[module.number].total===module.quiz.length)result.textContent="Último resultado guardado: "+progress.scores[module.number].correct+"/"+progress.scores[module.number].total+" correctas.";
-   submit.addEventListener("click",function(){
-    var correct=0,answered=0;Array.prototype.forEach.call(quiz.querySelectorAll("fieldset"),function(field,qi){var selected=field.querySelector("input:checked");var feedback=field.querySelector(".quiz-feedback");if(feedback)feedback.remove();var explanation=textNode("p",module.quiz[qi].explanation,"quiz-feedback");field.appendChild(explanation);if(selected){answered++;if(Number(selected.value)===module.quiz[qi].answer)correct++}});
-    result.textContent="Resultado: "+correct+"/"+module.quiz.length+" correctas · "+answered+" respondidas. Revisa las respuestas correctas y vuelve a intentarlo.";
-    progress.scores[module.number]={correct:correct,total:module.quiz.length};save()
-   });
+   var quiz=textNode("div","","quiz-box");quiz.appendChild(textNode("h4","Quiz de práctica · "+module.quiz.length+" preguntas, una por vez"));
+   var flow=createQuestionFlow({id:"quiz-"+module.number,questions:module.quiz,startLabel:"Comenzar quiz",onGrade:function(correct,answered,total){progress.scores[module.number]={correct:correct,total:total};save()},resultText:function(correct,answered,total){return "Resultado: "+correct+"/"+total+" correctas · "+answered+" respondidas. Puedes revisar tus respuestas o intentarlo de nuevo."}});
+   quiz.appendChild(flow);details.appendChild(quiz);
+   var previousResult=flow.querySelector(".quiz-result");if(progress.scores[module.number]&&progress.scores[module.number].total===module.quiz.length)previousResult.textContent="Último resultado guardado: "+progress.scores[module.number].correct+"/"+progress.scores[module.number].total+" correctas.";
    var completed=module.lessons.filter(function(_,i){return progress.lessons[module.number+"-"+i]}).length;count.textContent=completed+"/"+module.lessons.length+" lecciones";
    host.appendChild(details)
   });
@@ -689,7 +762,7 @@ function initCourse(){
  filter.addEventListener("change",function(){if(window.courseModules)render(window.courseModules)});
  Promise.all(["data/course.json","data/quiz-bank.json"].map(function(url){return fetch(url).then(function(response){if(!response.ok)throw new Error(url+" HTTP "+response.status);return response.json()})})).then(function(payload){
   var data=payload[0],bank=payload[1];if(!data.modules||!data.modules.length)throw new Error("El programa no contiene módulos");
-  data.modules.forEach(function(module){var rows=bank[String(module.number)];if(!Array.isArray(rows))throw new Error("Falta el banco de preguntas del módulo "+module.number);rows.forEach(function(row,rowIndex){if(!Array.isArray(row)||row.length!==8||row.some(function(value){return typeof value!=="string"}))throw new Error("Pregunta inválida en módulo "+module.number+", fila "+(rowIndex+1));[0,4].forEach(function(offset,variant){var correct=row[offset+1],answer=(module.number+rowIndex+variant)%3,options=[];options[answer]=correct;options[(answer+1)%3]=row[offset+2];options[(answer+2)%3]=row[offset+3];module.quiz.push({question:row[offset],options:options,answer:answer,explanation:"La respuesta correcta es «"+correct+"»."})})});if(module.quiz.length<30)throw new Error("El módulo "+module.number+" tiene menos de 30 preguntas")});
+  data.modules.forEach(function(module){var rows=bank[String(module.number)];if(!Array.isArray(rows))throw new Error("Falta el banco de preguntas del módulo "+module.number);rows.forEach(function(row,rowIndex){if(!Array.isArray(row)||row.length!==8||row.some(function(value){return typeof value!=="string"}))throw new Error("Pregunta inválida en módulo "+module.number+", fila "+(rowIndex+1));[0,4].forEach(function(offset,variant){var correct=row[offset+1],answer=(module.number+rowIndex+variant)%3,options=[];options[answer]=correct;options[(answer+1)%3]=row[offset+2];options[(answer+2)%3]=row[offset+3];module.quiz.push({question:row[offset],options:options,answer:answer})})});if(module.quiz.length<30)throw new Error("El módulo "+module.number+" tiene menos de 30 preguntas")});
   if(data.modules.reduce(function(total,module){return total+module.quiz.length},0)<50)throw new Error("El banco no tiene suficientes preguntas para el examen final");
   window.courseModules=data.modules;render(data.modules);renderFinalExam(data.modules);data.modules.forEach(function(module,index){dynamicSearchItems.push({title:"Módulo "+module.number+" · "+module.title,content:module.lessons.join(" ")+" "+module.quiz.map(function(q){return q.question+" "+q.options.join(" ")}).join(" "),type:"course",section:"curso",index:index})})
  }).catch(function(error){console.error("Error al cargar el curso FOXSEC:",error);host.replaceChildren(textNode("p","No se pudo cargar el programa o el banco de preguntas. Comprueba tu conexión y recarga la página.","empty-state"))})
@@ -731,7 +804,7 @@ function extendResources(){
  resourceAdders.sistemas("Fedora Linux|Base|Distribución actual para estación de trabajo y servidor.;Rocky Linux|Servidor|Distribución empresarial compatible con ecosistemas RHEL.;AlmaLinux|Servidor|Distribución Linux empresarial comunitaria.;openSUSE Leap y Tumbleweed|Base|Opciones estables y rolling release de openSUSE.;Arch Linux|Base|Distribución rolling release para aprender administración Linux.;Alpine Linux|Contenedores|Sistema ligero usado en contenedores y dispositivos.;FreeBSD|Unix|Sistema Unix-like para redes, almacenamiento y seguridad.;OpenWrt|Redes|Firmware de router para laboratorio y redes domésticas.;OPNsense|Firewall|Firewall y router open source con documentación pública.;Windows Sandbox|Aislamiento|Entorno temporal de Windows disponible en ediciones compatibles.;Windows Server Evaluation|Servidor|Evaluación oficial de Windows Server para laboratorio aislado.;Security Onion|Defensa|Plataforma de monitoreo y detección para laboratorios.;REMnux|Análisis|Linux de herramientas de análisis de malware en laboratorio aislado.");
  refreshStaticSearchIndex()
 }
-function loadCatalogsAndCourse(){loadCatalogs();initCourse();renderLanguageGuide();extendResources()}
+function loadCatalogsAndCourse(){initStudyAccessibility();loadCatalogs();initCourse();renderLanguageGuide();extendResources()}
 loadCatalogsAndCourse();
 function closeSearch(){searchResults.hidden=true;globalSearch.setAttribute("aria-expanded","false")}
 function runGlobalSearch(){refreshStaticSearchIndex();var q=globalSearch.value.trim().toLocaleLowerCase("es");searchResults.replaceChildren();if(!q){closeSearch();return}
