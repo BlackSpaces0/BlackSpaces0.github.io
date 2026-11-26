@@ -8,7 +8,8 @@ Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, pr
 
 - Ruta de aprendizaje y plan de estudio de 11 semanas.
 - Curso interactivo de 10 módulos, seguimiento local de lecciones, mínimo 30 preguntas de práctica por módulo y examen final aleatorio de 50 preguntas (cinco por módulo).
-- Ajustes opcionales que pueden ayudar con la atención y la lectura (incluidas necesidades asociadas a TDAH o dislexia): espaciado cómodo, tamaño de texto, lectura en voz alta, modo enfoque y quizzes de una pregunta por pantalla. Cada persona puede elegir lo que le resulte más cómodo.
+- Microlecciones con ejemplos y retos interactivos para iniciar cada módulo.
+- Ajustes opcionales que pueden ayudar con la atención y la lectura (incluidas necesidades asociadas a TDAH o dislexia): espaciado cómodo, tamaño de texto, lectura en voz alta, alto contraste, modo enfoque y quizzes de una pregunta por pantalla. El navegador guarda las preferencias y los borradores del quiz localmente; cada persona puede elegir lo que le resulte más cómodo.
 - Catálogo de más de 600 herramientas/plataformas y glosario de más de 1.000 términos, con filtros, paginación y búsqueda global.
 - Páginas de práctica, sistemas operativos, guía de lenguajes vigentes y heredados, arquitectura de redes y canales educativos.
 - Más de 50 lecturas, películas, series, anime, videojuegos y simuladores educativos; certificaciones e insignias con enlaces a sus proveedores.
@@ -18,6 +19,8 @@ Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, pr
 - Logo e ilustraciones proporcionados para el proyecto en `assets/`; se cargan localmente, sin hotlinks externos.
 
 Los catálogos se cargan desde `data/` y usan filtros, paginación y fuentes atribuidas. Consulta [data/SOURCES.md](data/SOURCES.md) para procedencia y licencias. Parte del glosario está originalmente en inglés y se etiqueta como tal; no se presenta como traducción. Los títulos oficiales de las lecciones de los módulos 2–10 se conservan según lo aportado por el usuario; los títulos del módulo 1 se identifican como propuestas.
+
+FOXSEC es un proyecto abierto para la comunidad. Consulta [cómo contribuir](CONTRIBUTING.md), el [código de conducta](CODE_OF_CONDUCT.md), la [política de seguridad](SECURITY.md) y la [hoja de ruta](ROADMAP.md). Cada pull request ejecuta un validador para revisar los datos del curso y sus atribuciones.
 
 Los enlaces a certificaciones llevan a proveedores oficiales cuando están disponibles. Precios, versiones, requisitos, becas y ofertas gratuitas pueden cambiar o depender del país; verifica todo en la página del proveedor antes de inscribirte. Los quizzes son material de práctica y no preguntas oficiales.
 
