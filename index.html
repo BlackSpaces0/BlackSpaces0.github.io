@@ -3,618 +3,174 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ciberseguridad en español: ruta, glosario, herramientas y biblioteca</title>
-<meta name="description" content="Guía completa y gratuita para aprender ciberseguridad desde cero en español: ruta de 10 pasos, glosario técnico de +45 términos, herramientas, laboratorios, libros y hojas de referencia.">
+<title>Ciberseguridad en español: ruta, estudio, herramientas y glosario</title>
+<meta name="description" content="Recursos gratuitos para aprender ciberseguridad desde cero, en español: ruta, plan de estudio, herramientas, glosario, libros y páginas útiles.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0d1922; --surface:#152634; --surface-2:#1b3142; --line:#294356;
-  --text:#eaf1f6; --muted:#9fb4c4; --accent:#5bc0be; --warm:#f0b429;
-  --danger:#ff6b6b; --code:#081219; --badge-bg:rgba(91,192,190,.14);
-}
-@media (prefers-color-scheme: light){
-  :root{
-    --bg:#f4f7fa; --surface:#ffffff; --surface-2:#eef3f7; --line:#cbd8e2;
-    --text:#13212c; --muted:#485f70; --accent:#0b7a78; --warm:#9a6300;
-    --danger:#c92a2a; --code:#e8eff5; --badge-bg:rgba(11,122,120,.12);
-  }
-}
+:root{--bg:#161112;--s1:#1f1819;--s2:#271f20;--s3:#31282a;--on:#efe0e0;--var:#d7c2c3;--out:#a08c8d;--p:#ffb3b6;--onp:#561e24;--pc:#732f36;--opc:#ffdad9;--t:#e9c176;--ont:#3f2e04;--r:28px}
+@media (prefers-color-scheme:light){:root{--bg:#fff8f7;--s1:#fbeeed;--s2:#f6e6e5;--s3:#f0dede;--on:#231919;--var:#534343;--out:#857373;--p:#9a4047;--onp:#fff;--pc:#ffdad9;--opc:#40000a;--t:#6f5100;--ont:#fff}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font:16.5px/1.68 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--warm)}
-:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
-
-/* NAVEGACIÓN */
-header.nav{
-  position:sticky;top:0;z-index:20;
-  background:rgba(13,25,34,.94);backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-@media (prefers-color-scheme: light){
-  header.nav{background:rgba(244,247,250,.94)}
-}
-.nav-in{
-  max-width:980px;margin:0 auto;padding:12px 20px;
-  display:flex;gap:14px 18px;flex-wrap:wrap;align-items:center;
-}
-.nav-in strong{
-  font-family:Georgia,"Times New Roman",serif;font-size:1.1rem;
-  margin-right:auto;color:var(--text);letter-spacing:-.01em;
-}
-.nav-in a{
-  color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;
-  padding:4px 6px;border-radius:6px;transition:color .15s,background .15s;
-}
-.nav-in a:hover{color:var(--text);background:var(--surface)}
-
-/* CONTENEDOR PRINCIPAL */
-main{max-width:980px;margin:0 auto;padding:0 20px 70px}
-
-/* HERO */
-.hero{padding:56px 0 38px}
-.hero-tag{
-  display:inline-block;background:var(--badge-bg);color:var(--accent);
-  border:1px solid var(--line);padding:4px 12px;border-radius:99px;
-  font-size:.85rem;font-weight:600;margin-bottom:16px;
-}
-.hero h1{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.12;
-  margin:0 0 18px;letter-spacing:-.015em;max-width:18ch;
-}
-.hero p{max-width:65ch;color:var(--muted);font-size:1.08rem;margin:0 0 16px}
-.hero .note{
-  background:var(--surface);border:1px solid var(--line);
-  border-left:4px solid var(--warm);border-radius:8px;
-  padding:14px 18px;color:var(--text);font-size:.98rem;max-width:65ch;
-}
-
-/* SECCIONES */
-section{padding:44px 0;border-top:1px solid var(--line)}
-h2{font-family:Georgia,"Times New Roman",serif;font-size:1.85rem;margin:0 0 8px}
-.lead{color:var(--muted);max-width:68ch;margin:0 0 24px;font-size:1.02rem}
-
-/* TARJETAS Y GRID */
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
-.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{
-  background:var(--surface);border:1px solid var(--line);border-radius:10px;
-  padding:18px 20px;display:flex;flex-direction:column;gap:8px;
-}
-.card h3{margin:0;font-size:1.12rem;color:var(--text)}
-.card p{margin:0;color:var(--muted);font-size:.96rem}
-.badge{
-  display:inline-block;align-self:flex-start;
-  background:var(--badge-bg);color:var(--accent);
-  font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
-  padding:3px 9px;border-radius:6px;
-}
-.badge.warm{background:rgba(240,180,41,.15);color:var(--warm)}
-
-/* RUTA DE APRENDIZAJE */
-ol.path{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:16px}
-ol.path li{
-  counter-increment:s;background:var(--surface);border:1px solid var(--line);
-  border-radius:12px;padding:18px 20px 18px 66px;position:relative;
-}
-ol.path li::before{
-  content:counter(s);position:absolute;left:18px;top:18px;
-  width:34px;height:34px;border-radius:50%;background:var(--accent);
-  color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:1rem;
-}
-ol.path h3{margin:0 0 6px;font-size:1.16rem}
-ol.path p{margin:0 0 8px;color:var(--muted)}
-ol.path .for{color:var(--text);font-size:.96rem}
-.topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.topics span{
-  background:var(--code);border:1px solid var(--line);color:var(--muted);
-  font-size:.82rem;padding:2px 9px;border-radius:6px;font-family:ui-monospace,Consolas,monospace;
-}
-
-/* GLOSARIO Y FILTROS */
-.glossary-controls{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px;align-items:center}
-input[type=search]{
-  flex:1 1 280px;max-width:440px;padding:11px 15px;border-radius:8px;
-  border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;
-}
-.cat-filters{display:flex;flex-wrap:wrap;gap:6px}
-.cat-btn{
-  background:var(--surface);border:1px solid var(--line);color:var(--muted);
-  padding:6px 12px;border-radius:99px;font-size:.85rem;cursor:pointer;font-weight:600;
-}
-.cat-btn:hover,.cat-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
-.count-info{font-size:.9rem;color:var(--muted);margin-bottom:12px}
-
-details{
-  background:var(--surface);border:1px solid var(--line);
-  border-radius:8px;margin-bottom:9px;transition:border-color .15s;
-}
-details[open]{border-color:var(--accent)}
-summary{
-  cursor:pointer;padding:13px 16px;font-weight:600;list-style:none;
-  display:flex;align-items:center;gap:10px;
-}
+html{scroll-behavior:smooth;scroll-padding-top:84px;height:100%}
+body{margin:0;background:var(--bg);color:var(--on);font:400 16px/1.6 "Roboto Flex",Roboto,system-ui,sans-serif;padding-top:env(safe-area-inset-top,0)}
+a{color:var(--p)}
+:focus-visible{outline:3px solid var(--t);outline-offset:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0);z-index:9;margin:12px auto 0;max-width:1120px;width:calc(100% - 24px);background:var(--s2);border-radius:999px;display:flex;align-items:center;gap:6px;padding:6px 8px 6px 20px}
+.bar b{font-weight:900;font-size:1.05rem;margin-right:auto;white-space:nowrap}
+.bar nav{display:flex;gap:2px;overflow-x:auto}
+.bar a{color:var(--var);text-decoration:none;padding:8px 14px;border-radius:999px;font-weight:500;font-size:.92rem;white-space:nowrap}
+.bar a:hover{background:var(--s3);color:var(--on)}
+.bar a.on{background:var(--pc);color:var(--opc)}
+main{max-width:1120px;margin:0 auto;padding:16px 12px 60px}
+.hero{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.card{background:var(--s1);border-radius:var(--r);padding:24px}
+.big{grid-column:span 8;background:var(--pc);color:var(--opc);position:relative;overflow:hidden;padding:36px 36px 40px;min-height:380px;border-radius:var(--r) 120px var(--r) var(--r)}
+.big h1{font-weight:900;font-size:clamp(2.6rem,8vw,5.6rem);line-height:.92;letter-spacing:-.03em;margin:0 0 18px;font-stretch:75%}
+.big p{max-width:46ch;margin:0 0 22px;font-size:1.05rem}
+.big::after{content:"";position:absolute;right:-60px;bottom:-60px;width:260px;height:260px;border-radius:50%;background:var(--p);opacity:.28}
+.side{grid-column:span 4;display:grid;gap:12px}
+.stat{background:var(--s3);border-radius:var(--r) var(--r) 90px var(--r);display:flex;flex-direction:column;justify-content:center}
+.stat strong{font-size:3.4rem;font-weight:900;line-height:1;color:var(--p)}
+.safe{background:var(--t);color:var(--ont);border-radius:var(--r);padding:20px 24px;font-size:.95rem}
+.btn{display:inline-block;padding:12px 24px;border-radius:999px;background:var(--p);color:var(--onp);font-weight:700;text-decoration:none;margin-right:8px;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn.t{background:transparent;color:var(--opc);box-shadow:inset 0 0 0 1px var(--out)}
+section{padding:52px 0 8px}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.02em;margin:0 0 6px}
+.lead{color:var(--var);max-width:64ch;margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.item{background:var(--s1);border-radius:var(--r);padding:20px 22px}
+.item:nth-child(3n+2){border-radius:var(--r) var(--r) 64px var(--r)}
+.item h3{margin:0 0 6px;font-size:1.1rem}
+.item p{margin:0 0 8px;color:var(--var);font-size:.95rem}
+.item small{color:var(--out)}
+.step{counter-increment:s}
+.step h3::before{content:counter(s);display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--p);color:var(--onp);margin-right:10px;font-size:.95rem}
+.steps{counter-reset:s}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.chip{border:1px solid var(--out);background:transparent;color:var(--var);padding:7px 16px;border-radius:10px;font:inherit;font-size:.9rem;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--pc);color:var(--opc);border-color:transparent}
+.tag{display:inline-block;background:var(--s3);color:var(--p);border-radius:8px;padding:2px 10px;font-size:.78rem;margin-bottom:8px}
+input[type=search]{width:100%;max-width:440px;padding:14px 22px;border-radius:999px;border:0;background:var(--s3);color:var(--on);font:inherit;margin-bottom:14px}
+details{background:var(--s1);border-radius:20px;margin-bottom:8px}
+summary{cursor:pointer;padding:14px 20px;font-weight:500;list-style:none}
 summary::-webkit-details-marker{display:none}
-summary .term-cat{
-  margin-left:auto;font-size:.75rem;font-weight:600;color:var(--muted);
-  background:var(--code);padding:2px 8px;border-radius:5px;border:1px solid var(--line);
-}
-summary::after{content:"+";color:var(--accent);font-size:1.2rem;font-weight:700;margin-left:8px}
+summary::after{content:"+";float:right;color:var(--p);font-weight:700}
 details[open] summary::after{content:"−"}
-details div{
-  padding:4px 18px 16px;color:var(--muted);
-  border-top:1px solid rgba(41,67,86,.45);margin-top:2px;
-}
-details div p{margin:8px 0 0}
-details div b{color:var(--text)}
+details[open]{background:var(--s2)}
+details div{padding:0 20px 16px;color:var(--var)}
+.cmd{background:var(--s3);border-radius:16px;padding:12px 18px;margin-bottom:8px;overflow-x:auto}
+.cmd code{font:500 .9rem "Roboto Mono",ui-monospace,Consolas,monospace;color:var(--t);white-space:pre}
+.cmd span{display:block;color:var(--var);font-size:.9rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--s3)}
+th{color:var(--p)}
+.wrap{overflow-x:auto}
+footer{max-width:1120px;margin:0 auto;padding:24px 20px 50px;color:var(--var);font-size:.92rem}
+.empty{color:var(--out);padding:12px}
+@media(max-width:800px){.big,.side{grid-column:span 12}.big{border-radius:var(--r) 80px var(--r) var(--r)}.bar b{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-/* HOJAS DE REFERENCIA */
-.ref{margin-bottom:32px}
-.ref h3{margin:0 0 4px;font-size:1.3rem;color:var(--accent)}
-.ref p.d{color:var(--muted);margin:0 0 14px;max-width:68ch}
-.cmd{
-  background:var(--code);border:1px solid var(--line);border-radius:8px;
-  padding:12px 16px;margin-bottom:10px;overflow-x:auto;
-}
-.cmd code{
-  font:.92rem/1.5 ui-monospace,"Cascadia Code",Consolas,monospace;
-  color:var(--warm);white-space:pre;
-}
-.cmd span{display:block;color:var(--muted);font-size:.92rem;margin-top:4px}
-.warn{
-  background:var(--surface);border:1px solid var(--warm);
-  border-left:4px solid var(--warm);border-radius:8px;padding:14px 16px;margin:0 0 22px;
-}
-
-/* TABLA DE PUERTOS */
-.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-table{width:100%;border-collapse:collapse;text-align:left;font-size:.94rem}
-th,td{padding:11px 14px;border-bottom:1px solid var(--line)}
-th{background:var(--surface-2);color:var(--text);font-weight:700}
-tr:last-child td{border-bottom:none}
-td code{color:var(--warm);font-family:ui-monospace,Consolas,monospace;font-weight:600}
-
-footer{
-  max-width:980px;margin:0 auto;padding:28px 20px 54px;
-  border-top:1px solid var(--line);color:var(--muted);font-size:.95rem;
-  display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
-}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+section{background:var(--s1);border-radius:36px;padding:34px 28px 30px;margin-top:16px}
+section .item,section details,section .card{background:var(--s2)}
+section details[open]{background:var(--s3)}
+section .item:hover{background:var(--s3);transform:translateY(-2px)}
+.item{transition:transform .15s,background .15s}
+h2::before{content:"";display:inline-block;width:12px;height:.8em;border-radius:6px;background:var(--p);margin-right:12px;vertical-align:-.05em}
+.tag.c1{background:var(--pc);color:var(--opc)}.tag.c2{background:var(--t);color:var(--ont)}.tag.c3{background:var(--p);color:var(--onp)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px}
+.tile{display:flex;flex-direction:column;justify-content:flex-end;min-height:104px;padding:16px 18px;border-radius:24px;background:var(--s2);color:var(--on);text-decoration:none;font-weight:700}
+.tile:nth-child(4n+1){border-radius:24px 24px 24px 56px}.tile:nth-child(4n+3){background:var(--pc);color:var(--opc)}
+.tile small{font-weight:400;color:inherit;opacity:.75}
+.tile:hover{background:var(--s3)}.tile:nth-child(4n+3):hover{background:var(--p);color:var(--onp)}
+.up{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:18px;background:var(--pc);color:var(--opc);display:grid;place-items:center;text-decoration:none;font-size:1.4rem;font-weight:900;z-index:9}
+.sub{margin:30px 0 8px;font-size:1.25rem}
+@media(max-width:800px){section{padding:26px 16px 22px;border-radius:28px}}
 </style>
 </head>
 <body>
-
-<header class="nav">
-  <nav class="nav-in" aria-label="Navegación principal">
-    <strong>🛡️ Ciberseguridad en español</strong>
-    <a href="#ruta">Ruta de estudio</a>
-    <a href="#herramientas">Herramientas</a>
-    <a href="#recursos">Laboratorios y Webs</a>
-    <a href="#libros">Libros</a>
-    <a href="#glosario">Glosario</a>
-    <a href="#referencias">Cheatsheets</a>
-    <a href="#acerca">Acerca</a>
-  </nav>
-</header>
-
+<header class="bar"><b>CIBER·ES</b><nav aria-label="Principal">
+<a href="#ruta">Ruta</a><a href="#estudio">Estudio</a><a href="#herramientas">Herramientas</a><a href="#glosario">Glosario</a><a href="#referencias">Referencias</a><a href="#recursos">Webs</a><a href="#sistemas">Sistemas</a><a href="#lenguajes">Lenguajes</a><a href="#youtube">YouTube</a><a href="#libros">Libros</a><a href="#cine">Cine</a><a href="#certs">Certificaciones</a><a href="#insignias">Insignias</a></nav></header>
 <main>
 <div class="hero">
-  <span class="hero-tag">Guía Técnica &amp; Base de Conocimiento</span>
-  <h1>Aprende ciberseguridad desde cero, en español.</h1>
-  <p>Una ruta estructurada de 10 fases, catálogo de herramientas reales, plataformas de laboratorio, biblioteca recomendada, glosario técnico con más de 45 términos y hojas de referencia listas para usar.</p>
-  <p class="note"><strong>⚠️ Ética y legalidad primero:</strong> Todo el conocimiento, herramientas y comandos documentados aquí deben aplicarse exclusivamente en entornos propios, máquinas virtuales aisladas, plataformas de laboratorio autorizadas o bajo contrato con permiso explícito por escrito.</p>
+ <div class="card big"><h1>Aprende ciberseguridad desde cero.</h1><p>Ruta ordenada, plan de estudio, herramientas explicadas, glosario y hojas de referencia, todo en español y gratis.</p><a class="btn" href="#ruta">Empezar la ruta</a><a class="btn t" href="#herramientas">Ver herramientas</a></div>
+ <div class="side"><div class="card stat"><strong id="n1">0</strong><span>herramientas explicadas</span></div><div class="card stat"><strong id="n2">0</strong><span>términos en el glosario</span></div><div class="safe"><b>Práctica ética.</b> Usa todo solo en equipos propios, laboratorios o con permiso por escrito.</div></div>
 </div>
+<div class="tiles" id="tiles"></div>
 
-<!-- 1. RUTA DE APRENDIZAJE -->
-<section id="ruta">
-  <h2>🗺️ Ruta de aprendizaje completa (10 Fases)</h2>
-  <p class="lead">No intentes aprenderlo todo en un fin de semana. Sigue esta secuencia lógica: cada bloque construye la base técnica necesaria para dominar el siguiente.</p>
-  <ol class="path">
-    <li>
-      <h3>Fundamentos de Hardware, Arquitectura y Sistemas Operativos</h3>
-      <p>Comprende cómo funciona una computadora por dentro (CPU, memoria RAM, almacenamiento, BIOS/UEFI, procesos, hilos y gestión de memoria) y domina la administración avanzada de Windows (Registro, Active Directory, PowerShell) y Linux.</p>
-      <p class="for"><strong>Para qué sirve:</strong> No puedes proteger ni auditar un sistema si desconoces cómo arranca, cómo ejecuta programas o cómo gestiona sus usuarios.</p>
-      <div class="topics"><span>Arquitectura x86/ARM</span><span>Windows Registry</span><span>Active Directory</span><span>Permisos NTFS/POSIX</span><span>Virtualización</span></div>
-    </li>
-    <li>
-      <h3>Redes y Protocolos de Comunicación</h3>
-      <p>Estudia los modelos OSI y TCP/IP, direccionamiento IPv4/IPv6, subredes (subnetting), enrutamiento, NAT, VLANs, ARP, DHCP, DNS, HTTP/HTTPS, SSH, SMB y el saludo de tres vías (3-way handshake) de TCP.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Casi todos los ataques ocurren a través de la red. Entender los paquetes te permite ver lo que otros pasan por alto.</p>
-      <div class="topics"><span>Modelo OSI / TCP-IP</span><span>Subnetting</span><span>DNS / DHCP</span><span>HTTP/S</span><span>Análisis de paquetes</span></div>
-    </li>
-    <li>
-      <h3>Linux y Dominio de la Terminal (Bash)</h3>
-      <p>Aprende a navegar sin interfaz gráfica, manipular flujos de texto con tuberías (pipes), gestionar servicios con <code>systemd</code>, configurar permisos granulares, administrar usuarios y automatizar tareas mediante scripts en Bash.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Más del 90% de los servidores en internet y casi todas las distribuciones de auditoría (Kali Linux, Parrot OS) funcionan sobre Linux.</p>
-      <div class="topics"><span>Bash Scripting</span><span>chmod / chown</span><span>grep / awk / sed</span><span>systemd</span><span>SSH Hardening</span></div>
-    </li>
-    <li>
-      <h3>Programación y Automatización para Seguridad</h3>
-      <p>Aprende a leer y escribir código para automatizar análisis, crear herramientas propias y entender cómo se introducen los errores en el software. Prioriza <strong>Python</strong> (automatización y red), <strong>JavaScript</strong> (seguridad web) y <strong>SQL</strong> (bases de datos).</p>
-      <p class="for"><strong>Para qué sirve:</strong> Diferencia a quien solo ejecuta herramientas ajenas de un profesional capaz de adaptar exploits, analizar logs masivos y auditar código fuente.</p>
-      <div class="topics"><span>Python (requests, socket)</span><span>JavaScript / DOM</span><span>SQL</span><span>PowerShell</span><span>APIs REST</span></div>
-    </li>
-    <li>
-      <h3>Criptografía Aplicada e Infraestructura de Clave Pública (PKI)</h3>
-      <p>Diferencia entre codificación (Base64), hashing (SHA-256, Argon2), cifrado simétrico (AES) y asimétrico (RSA, ECC). Entiende cómo funcionan los certificados digitales, TLS/SSL, firmas digitales y el almacenamiento seguro de credenciales.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Permite proteger datos en tránsito y en reposo, además de detectar implementaciones criptográficas débiles o certificados mal configurados.</p>
-      <div class="topics"><span>AES / RSA / ECC</span><span>SHA-256 / Salting</span><span>TLS 1.3</span><span>Certificados X.509</span><span>PKI</span></div>
-    </li>
-    <li>
-      <h3>Seguridad en Aplicaciones Web (OWASP Top 10)</h3>
-      <p>Analiza cómo funcionan los navegadores, cookies, sesiones, tokens JWT y APIs. Estudia vulnerabilidades críticas: Inyección SQL (SQLi), Cross-Site Scripting (XSS), CSRF, SSRF, IDOR, LFI/RFI y fallos de control de acceso.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Las aplicaciones web y APIs representan la mayor superficie de exposición pública de cualquier empresa moderna.</p>
-      <div class="topics"><span>OWASP Top 10</span><span>SQLi / XSS</span><span>IDOR / SSRF</span><span>JWT &amp; OAuth</span><span>Burp Suite</span></div>
-    </li>
-    <li>
-      <h3>Seguridad Ofensiva (Pentesting y Red Team)</h3>
-      <p>Aplica metodologías estructuradas (PTES, OSSTMM): reconocimiento pasivo y activo, enumeración de servicios, análisis de vulnerabilidades, explotación controlada, escalada de privilegios en Linux/Windows y redacción de informes ejecutivos y técnicos.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Permite evaluar la resistencia real de una organización simulando las tácticas de un atacante antes de que ocurra un incidente real.</p>
-      <div class="topics"><span>Reconocimiento</span><span>Enumeración</span><span>Escalada de privilegios</span><span>Active Directory Attacks</span><span>Reportes Técnicos</span></div>
-    </li>
-    <li>
-      <h3>Seguridad Defensiva, SOC y Detección (Blue Team)</h3>
-      <p>Aprende a configurar y monitorear firewalls, IDS/IPS, soluciones EDR y plataformas SIEM. Aprende a correlacionar eventos, analizar logs de Windows/Linux, mapear amenazas con MITRE ATT&amp;CK y aplicar endurecimiento (Hardening).</p>
-      <p class="for"><strong>Para qué sirve:</strong> Es el área con mayor demanda laboral: construir defensas resilientes y detectar intrusiones en tiempo real.</p>
-      <div class="topics"><span>SIEM / Splunk / Wazuh</span><span>MITRE ATT&amp;CK</span><span>EDR / XDR</span><span>Hardening CIS</span><span>Threat Hunting</span></div>
-    </li>
-    <li>
-      <h3>Respuesta a Incidentes y Análisis Forense Digital (DFIR)</h3>
-      <p>Domina el ciclo de vida de respuesta ante incidentes (Preparación, Detección, Contención, Erradicación, Recuperación y Lecciones Aprendidas), preservación de cadena de custodia, volcado de memoria RAM y análisis de artefactos en disco.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Cuando ocurre un ransomware o una brecha de datos, el equipo DFIR determina qué ocurrió, frena el impacto y recupera la operación.</p>
-      <div class="topics"><span>Cadena de Custodia</span><span>Volatility (RAM)</span><span>Autopsy</span><span>Análisis de Malware</span><span>Playbooks</span></div>
-    </li>
-    <li>
-      <h3>Seguridad en la Nube y Gobernanza (Cloud &amp; GRC)</h3>
-      <p>Comprende el modelo de responsabilidad compartida en AWS, Azure o GCP, gestión de identidades (IAM), seguridad en contenedores (Docker/Kubernetes) y marcos normativos como ISO/IEC 27001, NIST CSF y gestión de riesgos.</p>
-      <p class="for"><strong>Para qué sirve:</strong> Conecta la seguridad técnica con el negocio, las auditorías internacionales y las infraestructuras modernas en la nube.</p>
-      <div class="topics"><span>IAM Cloud</span><span>Modelo Responsabilidad Compartida</span><span>ISO 27001</span><span>NIST CSF</span><span>Gestión de Riesgos</span></div>
-    </li>
-  </ol>
-</section>
+<section id="ruta"><h2>Ruta de aprendizaje</h2><p class="lead">Sigue el orden. Sesiones cortas y constantes rinden más que una maratón.</p><div class="grid steps" id="ruta-l"></div></section>
 
-<!-- 2. HERRAMIENTAS ESENCIALES -->
-<section id="herramientas">
-  <h2>🛠️ Arsenal de Herramientas por Categoría</h2>
-  <p class="lead">No necesitas instalar cien programas. Domina estas herramientas estándar de la industria organizadas según su función operativa.</p>
+<section id="estudio"><h2>Cómo estudiar</h2><p class="lead">Plan de 11 semanas para los 7 módulos base de ciberseguridad, pensado para llegar a un examen como Security+ entre el mes 4 y el 5.</p>
+<div class="grid" id="est-l"></div>
+<h3 style="margin:28px 0 10px">Plan semana por semana</h3><div class="card wrap"><table><thead><tr><th>Semana</th><th>Tema</th><th>Práctica</th></tr></thead><tbody id="plan"></tbody></table></div>
+<h3 style="margin:28px 0 10px">Repaso espaciado</h3><div class="chips" id="rep"></div></section>
 
-  <div class="grid-2">
-    <div class="card">
-      <span class="badge">Reconocimiento &amp; OSINT</span>
-      <h3>Nmap &amp; Masscan</h3>
-      <p>Escáneres de red para descubrimiento de hosts activos, puertos abiertos, detección de versiones de servicios y ejecución de scripts de auditoría (NSE).</p>
-    </div>
-    <div class="card">
-      <span class="badge">Reconocimiento &amp; OSINT</span>
-      <h3>Amass, Subfinder &amp; theHarvester</h3>
-      <p>Herramientas para enumeración de subdominios, mapeo de superficie de ataque externa y recolección de correos o activos públicos (OSINT).</p>
-    </div>
-    <div class="card">
-      <span class="badge">Análisis de Red</span>
-      <h3>Wireshark &amp; tcpdump</h3>
-      <p>Analizadores de protocolos que permiten capturar e inspeccionar paquete por paquete el tráfico que circula por una interfaz de red en tiempo real o archivos <code>.pcap</code>.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Seguridad Web</span>
-      <h3>Burp Suite &amp; OWASP ZAP</h3>
-      <p>Proxies de intercepción HTTP/HTTPS indispensables para capturar, modificar, repetir y automatizar pruebas sobre peticiones web y APIs.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Seguridad Web</span>
-      <h3>ffuf, Gobuster &amp; SQLmap</h3>
-      <p><code>ffuf</code> y <code>Gobuster</code> descubren rutas, directorios y parámetros ocultos por fuerza bruta; <code>SQLmap</code> automatiza la detección y explotación de inyecciones SQL.</p>
-    </div>
-    <div class="card">
-      <span class="badge warm">Explotación &amp; Auditoría</span>
-      <h3>Metasploit Framework &amp; NetExec</h3>
-      <p>Plataforma modular para validar vulnerabilidades conocidas (Metasploit) y suite especializada en auditoría de redes corporativas Windows/Active Directory (NetExec).</p>
-    </div>
-    <div class="card">
-      <span class="badge warm">Contraseñas &amp; Hashes</span>
-      <h3>Hashcat &amp; John the Ripper</h3>
-      <p>Herramientas de auditoría de contraseñas capaces de verificar la robustez de hashes mediante ataques de diccionario, reglas y fuerza bruta acelerada por GPU.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Blue Team &amp; DFIR</span>
-      <h3>Wazuh, Volatility &amp; CyberChef</h3>
-      <p><strong>Wazuh:</strong> SIEM/XDR open source para monitoreo. <strong>Volatility:</strong> análisis forense de memoria RAM. <strong>CyberChef:</strong> la "navaja suiza" para decodificar y analizar datos.</p>
-    </div>
-  </div>
-</section>
+<section id="herramientas"><h2>Herramientas</h2><p class="lead">Qué es cada una, para qué sirve y en qué certificación aparece. Aprende cada herramienta cuando el módulo la pida.</p>
+<input type="search" id="bt" placeholder="Buscar herramienta…" aria-label="Buscar herramienta"><div class="chips" id="tc"></div><div class="grid" id="tl"></div></section>
 
-<!-- 3. PLATAFORMAS, LABORATORIOS Y PÁGINAS DE ESTUDIO -->
-<section id="recursos">
-  <h2>🌐 Páginas, Laboratorios y Plataformas Recomendadas</h2>
-  <p class="lead">Sitios web imprescindibles para estudiar teoría actualizada, practicar en entornos legales y consultar bases de datos de vulnerabilidades.</p>
+<section id="glosario"><h2>Glosario</h2><p class="lead">Palabras que vas a escuchar todo el tiempo, sin tecnicismos.</p>
+<input type="search" id="bg" placeholder="Buscar un término…" aria-label="Buscar en el glosario"><div id="gl"></div></section>
 
-  <div class="grid-3">
-    <div class="card">
-      <span class="badge">Práctica Web Gratuita</span>
-      <h3><a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger Web Security Academy</a></h3>
-      <p>El mejor recurso gratuito del mundo para dominar seguridad web. Creado por los desarrolladores de Burp Suite, con teoría profunda y cientos de laboratorios interactivos.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Aprendizaje Guiado</span>
-      <h3><a href="https://tryhackme.com" target="_blank" rel="noopener">TryHackMe</a></h3>
-      <p>Plataforma ideal para principiantes e intermedios. Ofrece rutas paso a paso (Pre-Security, SOC Level 1, Jr Penetration Tester) con máquinas virtuales en el navegador.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Laboratorios &amp; Academia</span>
-      <h3><a href="https://www.hackthebox.com" target="_blank" rel="noopener">Hack The Box (HTB Academy)</a></h3>
-      <p>Referente mundial en retos técnicos y máquinas vulnerables. Su módulo <em>Starting Point</em> y su Academia ofrecen formación muy rigurosa para roles ofensivos y defensivos.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Linux desde Cero</span>
-      <h3><a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire: Bandit</a></h3>
-      <p>Un juego de guerra por niveles mediante conexión SSH diseñado específicamente para enseñarte a dominar la terminal de Linux de forma práctica y divertida.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Blue Team &amp; SOC</span>
-      <h3><a href="https://letsdefend.io" target="_blank" rel="noopener">LetsDefend &amp; CyberDefenders</a></h3>
-      <p>Simuladores de centros de operaciones de seguridad (SOC) donde investigas alertas reales, analizas tráfico malicioso, correos de phishing y artefactos forenses.</p>
-    </div>
-    <div class="card">
-      <span class="badge warm">Estándares y Marcos</span>
-      <h3><a href="https://owasp.org" target="_blank" rel="noopener">OWASP</a> &amp; <a href="https://attack.mitre.org" target="_blank" rel="noopener">MITRE ATT&amp;CK</a></h3>
-      <p><strong>OWASP:</strong> guías de pruebas web (WSTG) y Top 10. <strong>MITRE ATT&amp;CK:</strong> base de conocimiento global sobre tácticas y técnicas reales de adversarios.</p>
-    </div>
-    <div class="card">
-      <span class="badge warm">Inteligencia &amp; CVEs</span>
-      <h3><a href="https://www.shodan.io" target="_blank" rel="noopener">Shodan</a> &amp; <a href="https://www.virustotal.com" target="_blank" rel="noopener">VirusTotal</a></h3>
-      <p><strong>Shodan:</strong> buscador de dispositivos y servicios expuestos a internet. <strong>VirusTotal:</strong> análisis de archivos, hashes, URLs y dominios sospechosos con decenas de motores.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Guías Rápidas</span>
-      <h3><a href="https://gtfobins.github.io" target="_blank" rel="noopener">GTFOBins</a> &amp; <a href="https://book.hacktricks.xyz" target="_blank" rel="noopener">HackTricks</a></h3>
-      <p><strong>GTFOBins:</strong> catálogo de binarios de Unix para escalada de privilegios. <strong>HackTricks:</strong> enciclopedia técnica gigantesca de trucos y metodologías de auditoría.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Español / Institucional</span>
-      <h3><a href="https://www.incibe.es" target="_blank" rel="noopener">INCIBE</a> &amp; <a href="https://www.ccn-cert.cni.es" target="_blank" rel="noopener">CCN-CERT</a></h3>
-      <p>Guías oficiales en español sobre gestión de incidentes, endurecimiento de sistemas, normativas, alertas tempranas y buenas prácticas empresariales.</p>
-    </div>
-  </div>
-</section>
+<section id="referencias"><h2>Hojas de referencia</h2><p class="lead">Comandos frecuentes y datos para tener a mano.</p>
+<p class="safe" style="margin:0 0 16px"><b>Antes de escanear:</b> usa Nmap solo en tu red, laboratorios o con autorización escrita. Escanear equipos ajenos puede ser delito.</p>
+<div class="two"><div class="card"><h3>Nmap</h3><div id="c1"></div></div><div class="card"><h3>Linux: terminal</h3><div id="c2"></div></div></div>
+<div class="card wrap" style="margin-top:12px"><h3>Puertos que debes saber</h3><table><thead><tr><th>Puerto</th><th>Servicio</th><th>¿Seguro?</th></tr></thead><tbody id="pt"></tbody></table></div></section>
 
-<!-- 4. BIBLIOTECA RECOMENDADA -->
-<section id="libros">
-  <h2>📚 Libros Esenciales para tu Biblioteca</h2>
-  <p class="lead">Una selección curada de libros técnicos que realmente aportan criterio profundo más allá de los tutoriales superficiales.</p>
-
-  <div class="grid-2">
-    <div class="card">
-      <span class="badge">Fundamentos &amp; Redes</span>
-      <h3>Redes de Computadoras — Andrew S. Tanenbaum</h3>
-      <p>La biblia clásica para entender desde la capa física hasta la capa de aplicación. Indispensable para comprender cómo viajan los datos y dónde nacen los fallos de protocolo.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Linux &amp; Administración</span>
-      <h3>The Linux Command Line — William Shotts</h3>
-      <p>Disponible gratis en su web oficial. Te lleva desde los comandos más básicos hasta escribir scripts complejos en Bash con total soltura.</p>
-    </div>
-    <div class="card">
-      <span class="badge warm">Seguridad Web</span>
-      <h3>The Web Application Hacker's Handbook — Dafydd Stuttard</h3>
-      <p>Aunque tiene algunos años, su metodología para analizar, mapear y romper aplicaciones web sigue siendo la base sobre la que se construyó PortSwigger Academy.</p>
-    </div>
-    <div class="card">
-      <span class="badge warm">Pentesting Práctico</span>
-      <h3>Penetration Testing: A Hands-On Introduction to Hacking — Georgia Weidman</h3>
-      <p>Excelente libro introductorio para montar tu propio laboratorio virtual y practicar escaneo, explotación, ingeniería social y evasión básica paso a paso.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Programación Ofensiva</span>
-      <h3>Black Hat Python — Justin Seitz &amp; Tim Arnold</h3>
-      <p>Aprende a escribir tus propios sniffers, escáneres de red, herramientas de reconocimiento web y automatizaciones en Python aplicadas a seguridad.</p>
-    </div>
-    <div class="card">
-      <span class="badge">Defensa &amp; Operaciones</span>
-      <h3>Blue Team Handbook: Incident Response Edition — Don Murdoch</h3>
-      <p>Guía directa y operativa para analistas SOC y respondedores a incidentes: qué buscar, cómo contener amenazas y cómo documentar hallazgos bajo presión.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 5. GLOSARIO TÉCNICO AMPLIADO -->
-<section id="glosario">
-  <h2>📖 Glosario Técnico de Ciberseguridad</h2>
-  <p class="lead">Más de 45 conceptos fundamentales explicados con claridad: qué son, por qué importan y un ejemplo práctico. Filtra por categoría o busca cualquier término.</p>
-
-  <div class="glossary-controls">
-    <input type="search" id="buscar" placeholder="Buscar término (ej. XSS, SIEM, Zero-Day, JWT, Kerberos)…" aria-label="Buscar en el glosario">
-    <div class="cat-filters" role="group" aria-label="Filtrar por categoría">
-      <button type="button" class="cat-btn active" data-cat="todos">Todos</button>
-      <button type="button" class="cat-btn" data-cat="fundamentos">Fundamentos</button>
-      <button type="button" class="cat-btn" data-cat="ataques">Ataques &amp; Malware</button>
-      <button type="button" class="cat-btn" data-cat="web">Seguridad Web</button>
-      <button type="button" class="cat-btn" data-cat="redes">Redes &amp; Cripto</button>
-      <button type="button" class="cat-btn" data-cat="defensa">Defensa &amp; GRC</button>
-    </div>
-  </div>
-  <div class="count-info" id="contador">Mostrando todos los términos</div>
-
-  <div id="lista">
-    <!-- FUNDAMENTOS -->
-    <details data-cat="fundamentos"><summary>Tríada CIA (Confidencialidad, Integridad, Disponibilidad) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Los tres pilares básicos de la seguridad de la información. <b>Para qué importa:</b> Todo ataque rompe al menos uno de estos pilares y todo control busca protegerlos. <b>Ejemplo:</b> Cifrar una base de datos protege la confidencialidad; hacer copias de seguridad protege la disponibilidad.</p></div></details>
-    <details data-cat="fundamentos"><summary>Vulnerabilidad <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Un fallo de diseño, programación o configuración en un sistema. <b>Para qué importa:</b> Es la debilidad que permite que ocurra una intrusión. <b>Ejemplo:</b> Dejar una panel de administración con la contraseña por defecto <code>admin/admin</code>.</p></div></details>
-    <details data-cat="fundamentos"><summary>Amenaza (Threat) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Cualquier circunstancia o actor con potencial de explotar una vulnerabilidad y causar daño. <b>Para qué importa:</b> Permite priorizar defensas según quién o qué puede atacar. <b>Ejemplo:</b> Un grupo de cibercrimen, un empleado malintencionado o incluso un fallo eléctrico grave.</p></div></details>
-    <details data-cat="fundamentos"><summary>Riesgo (Risk) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> La probabilidad de que una amenaza explote una vulnerabilidad multiplicada por el impacto que causaría. <b>Para qué importa:</b> Ayuda a decidir dónde invertir presupuesto de seguridad primero. <b>Ejemplo:</b> Un servidor expuesto a internet sin parches con datos médicos tiene un riesgo crítico.</p></div></details>
-    <details data-cat="fundamentos"><summary>Exploit <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Un fragmento de código, secuencia de comandos o técnica diseñada para aprovechar una vulnerabilidad. <b>Para qué importa:</b> Demuestra que un fallo es aprovechable en la práctica. <b>Ejemplo:</b> Un script en Python que envía datos malformados para ejecutar código remoto en un servidor desactualizado.</p></div></details>
-    <details data-cat="fundamentos"><summary>Payload (Carga útil) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> La acción maliciosa o código que se ejecuta una vez que el exploit logra entrar en el sistema. <b>Para qué importa:</b> Separa el mecanismo de entrada (exploit) del objetivo final (payload). <b>Ejemplo:</b> Abrir una consola remota (reverse shell) o instalar un keylogger tras explotar un fallo.</p></div></details>
-    <details data-cat="fundamentos"><summary>CVE (Common Vulnerabilities and Exposures) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Un identificador estándar internacional (ej. <code>CVE-2024-3094</code>) asignado a cada vulnerabilidad pública conocida. <b>Para qué importa:</b> Permite que herramientas, fabricantes y analistas hablen exactamente del mismo fallo. <b>Ejemplo:</b> Buscar un CVE en la base de datos NVD para ver su gravedad (CVSS) y qué versión lo corrige.</p></div></details>
-    <details data-cat="fundamentos"><summary>CVSS (Common Vulnerability Scoring System) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Un sistema numérico del 0.0 al 10.0 que mide la severidad técnica de una vulnerabilidad. <b>Para qué importa:</b> Ayuda a clasificar qué parches aplicar en 24 horas (Crítico 9.0–10.0) y cuáles pueden esperar. <b>Ejemplo:</b> Un fallo que se explota por red sin autenticación suele recibir una puntuación superior a 9.0.</p></div></details>
-    <details data-cat="fundamentos"><summary>Zero-Day (Día Cero) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> Una vulnerabilidad recién descubierta para la cual el fabricante aún no ha publicado ningún parche ni solución. <b>Para qué importa:</b> Los defensores tienen "cero días" de ventaja para protegerse antes de que sea explotada. <b>Ejemplo:</b> Un fallo oculto en un navegador que los atacantes usan antes de que salga una actualización.</p></div></details>
-    <details data-cat="fundamentos"><summary>Superficie de Ataque (Attack Surface) <span class="term-cat">Fundamentos</span></summary><div><p><b>Qué es:</b> La suma total de todos los puntos posibles por donde un atacante puede intentar entrar o extraer datos de un sistema. <b>Para qué importa:</b> Mientras más pequeña sea la superficie, más fácil es defenderla. <b>Ejemplo:</b> Puertos abiertos, formularios web, APIs públicas, cuentas de empleados y dispositivos USB.</p></div></details>
-
-    <!-- ATAQUES Y MALWARE -->
-    <details data-cat="ataques"><summary>Phishing, Spear Phishing y Whaling <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Técnicas de ingeniería social que suplantan entidades legítimas para robar credenciales o instalar malware. El <em>Spear Phishing</em> va dirigido a una persona específica y el <em>Whaling</em> apunta a altos directivos. <b>Para qué importa:</b> Es el vector inicial más frecuente en intrusiones corporativas.</p></div></details>
-    <details data-cat="ataques"><summary>Ransomware <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Malware que cifra los archivos de una víctima y exige un rescate económico (generalmente en criptomonedas) a cambio de la clave de descifrado, a menudo robando datos antes para extorsionar. <b>Para qué importa:</b> Puede paralizar hospitales, bancos y empresas completas en cuestión de minutos.</p></div></details>
-    <details data-cat="ataques"><summary>Malware (Virus, Troyano, Gusano, Spyware) <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Software malicioso. Un <em>troyano</em> se disfraza de programa legítimo; un <em>gusano (worm)</em> se propaga solo por la red; el <em>spyware</em> espía actividad en silencio. <b>Para qué importa:</b> Conocer su comportamiento define cómo contenerlo y eliminarlo.</p></div></details>
-    <details data-cat="ataques"><summary>Fuerza Bruta y Credential Stuffing <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> La <em>fuerza bruta</em> prueba miles de combinaciones de contraseñas; el <em>credential stuffing</em> prueba pares de usuario/clave filtrados en otros sitios web. <b>Para qué importa:</b> Demuestra por qué nunca se debe reutilizar contraseñas y por qué es vital usar 2FA.</p></div></details>
-    <details data-cat="ataques"><summary>Escalada de Privilegios (Privilege Escalation) <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Pasar de una cuenta con pocos permisos (usuario estándar) a una con control total del sistema (<code>root</code> en Linux o <code>NT AUTHORITY\SYSTEM</code> en Windows). <b>Para qué importa:</b> Es el paso clave que permite al atacante tomar control completo de la máquina.</p></div></details>
-    <details data-cat="ataques"><summary>Movimiento Lateral (Lateral Movement) <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Técnicas que usa un intruso para saltar desde el primer equipo comprometido hacia otros servidores o estaciones dentro de la misma red interna. <b>Para qué importa:</b> Permite al atacante alcanzar los servidores críticos donde residen las bases de datos.</p></div></details>
-    <details data-cat="ataques"><summary>Reverse Shell vs. Bind Shell <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> En una <em>Bind Shell</em>, la víctima abre un puerto y espera conexión; en una <em>Reverse Shell</em>, la máquina víctima se conecta hacia el equipo del atacante. <b>Para qué importa:</b> Las reverse shells suelen evadir firewalls porque las conexiones salientes están menos restringidas que las entrantes.</p></div></details>
-    <details data-cat="ataques"><summary>DDoS (Denegación de Servicio Distribuida) <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Inundar un servidor o red con tráfico masivo desde miles de dispositivos infectados (botnet) hasta agotar su ancho de banda o CPU. <b>Para qué importa:</b> Deja fuera de línea servicios críticos sin necesidad de robar información.</p></div></details>
-    <details data-cat="ataques"><summary>Man-in-the-Middle (MitM) <span class="term-cat">Ataques &amp; Malware</span></summary><div><p><b>Qué es:</b> Interceptar silenciosamente la comunicación entre dos partes para leer o alterar los datos en tránsito. <b>Para qué importa:</b> Ocurre con frecuencia en redes Wi-Fi públicas inseguras cuando no se usa HTTPS/TLS o VPN.</p></div></details>
-
-    <!-- SEGURIDAD WEB -->
-    <details data-cat="web"><summary>Inyección SQL (SQLi) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Insertar código SQL malicioso en un campo de entrada porque la aplicación no separa los datos del usuario de las instrucciones de la base de datos. <b>Para qué importa:</b> Permite leer, modificar o borrar toda la base de datos e incluso ejecutar comandos en el servidor. <b>Solución:</b> Consultas parametrizadas (Prepared Statements).</p></div></details>
-    <details data-cat="web"><summary>XSS (Cross-Site Scripting) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Inyectar código JavaScript malicioso en una página web legítima para que se ejecute en el navegador de otros usuarios. <b>Para qué importa:</b> Permite robar cookies de sesión, capturar pulsaciones o realizar acciones en nombre de la víctima.</p></div></details>
-    <details data-cat="web"><summary>IDOR (Insecure Direct Object Reference) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Acceder a recursos de otro usuario simplemente cambiando un identificador en la URL o petición (ej. cambiar <code>/factura?id=105</code> a <code>/factura?id=106</code>). <b>Para qué importa:</b> Es uno de los fallos lógicos más comunes en APIs y aplicaciones modernas.</p></div></details>
-    <details data-cat="web"><summary>CSRF (Cross-Site Request Forgery) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Engañar al navegador de un usuario autenticado para que envíe una petición no deseada (ej. cambiar su correo o transferir dinero) a una web donde tiene sesión abierta. <b>Solución:</b> Tokens Anti-CSRF y atributo <code>SameSite</code> en cookies.</p></div></details>
-    <details data-cat="web"><summary>SSRF (Server-Side Request Forgery) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Hacer que el servidor web realice peticiones HTTP hacia recursos internos a los que el atacante no tendría acceso directo desde internet. <b>Para qué importa:</b> En entornos cloud (AWS/Azure), permite robar credenciales de metadatos internos del servidor.</p></div></details>
-    <details data-cat="web"><summary>JWT (JSON Web Token) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Un estándar compacto firmado digitalmente para transmitir identidad y permisos entre cliente y servidor. <b>Para qué importa:</b> Si se valida mal la firma o se guardan secretos débiles, un atacante puede falsificar su rol y convertirse en administrador.</p></div></details>
-    <details data-cat="web"><summary>WAF (Web Application Firewall) <span class="term-cat">Seguridad Web</span></summary><div><p><b>Qué es:</b> Un filtro especializado en capa HTTP/HTTPS que inspecciona peticiones web para bloquear patrones de ataques como SQLi o XSS. <b>Para qué importa:</b> Añade una capa de protección rápida mientras se corrige el código fuente, aunque no sustituye al desarrollo seguro.</p></div></details>
-
-    <!-- REDES Y CRIPTOGRAFÍA -->
-    <details data-cat="redes"><summary>Firewall (Cortafuegos) <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> Dispositivo o software que filtra el tráfico de red entrante y saliente según reglas de seguridad (IP, puerto, protocolo o aplicación). <b>Para qué importa:</b> Es la primera línea de defensa perimetral y de segmentación interna.</p></div></details>
-    <details data-cat="redes"><summary>VPN (Red Privada Virtual) <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> Crea un túnel cifrado entre tu dispositivo y una red remota a través de internet. <b>Para qué importa:</b> Protege la confidencialidad de tus datos en redes no confiables y permite acceso remoto seguro a redes corporativas.</p></div></details>
-    <details data-cat="redes"><summary>DNS (Domain Name System) <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> La "agenda telefónica" de internet que traduce nombres legibles (<code>google.com</code>) a direcciones IP numéricas. <b>Para qué importa:</b> Los atacantes usan el DNS para redirigir víctimas (DNS Spoofing) o exfiltrar datos ocultos (DNS Tunneling).</p></div></details>
-    <details data-cat="redes"><summary>Proxy vs. Reverse Proxy <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> Un <em>Proxy directo</em> actúa en nombre de los clientes que salen a internet; un <em>Reverse Proxy</em> (como Nginx o Cloudflare) recibe las peticiones de internet y las distribuye hacia los servidores internos, ocultando su IP real.</p></div></details>
-    <details data-cat="redes"><summary>Hash (Función Resumen) y Salting <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> Transforma cualquier dato en una cadena fija única e irreversible (ej. SHA-256). El <em>Salting</em> añade datos aleatorios antes de calcular el hash. <b>Para qué importa:</b> Permite almacenar contraseñas de forma segura y verificar que un archivo descargado no fue alterado.</p></div></details>
-    <details data-cat="redes"><summary>Cifrado Simétrico vs. Asimétrico <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> El <em>simétrico</em> (AES) usa la misma clave para cifrar y descifrar (muy rápido); el <em>asimétrico</em> (RSA, ECC) usa un par de claves: pública para cifrar y privada para descifrar. <b>Para qué importa:</b> HTTPS combina ambos para lograr seguridad y velocidad.</p></div></details>
-    <details data-cat="redes"><summary>TLS / SSL y HTTPS <span class="term-cat">Redes &amp; Cripto</span></summary><div><p><b>Qué es:</b> Protocolos criptográficos que garantizan que la comunicación entre tu navegador y un servidor web esté cifrada y sea auténtica. <b>Para qué importa:</b> Evita que terceros lean contraseñas, tarjetas o cookies mientras viajan por la red.</p></div></details>
-
-    <!-- DEFENSA, OPERACIONES Y GRC -->
-    <details data-cat="defensa"><summary>SOC (Security Operations Center) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> El equipo y centro de mando que monitorea, detecta, analiza y responde a incidentes de ciberseguridad 24/7. <b>Para qué importa:</b> Es el corazón operativo de la defensa en medianas y grandes organizaciones.</p></div></details>
-    <details data-cat="defensa"><summary>SIEM (Security Information and Event Management) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Plataforma centralizada (como Splunk, Microsoft Sentinel o Wazuh) que recolecta logs de servidores, firewalls y aplicaciones para correlacionarlos y generar alertas. <b>Para qué importa:</b> Permite ver el panorama completo de un ataque en curso.</p></div></details>
-    <details data-cat="defensa"><summary>EDR / XDR <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> <em>Endpoint Detection and Response</em>. Agentes avanzados instalados en computadoras y servidores que detectan comportamientos sospechosos en tiempo real y permiten aislar un equipo con un clic. <b>Para qué importa:</b> Supera por mucho a los antivirus tradicionales basados solo en firmas.</p></div></details>
-    <details data-cat="defensa"><summary>IDS vs. IPS <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> El <em>IDS</em> (Sistema de Detección de Intrusos) observa el tráfico y avisa si ve algo malicioso; el <em>IPS</em> (Sistema de Prevención) además bloquea automáticamente ese tráfico en tiempo real.</p></div></details>
-    <details data-cat="defensa"><summary>Principio de Mínimo Privilegio (PoLP) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Otorgar a cada usuario, programa o servicio únicamente los permisos estrictamente necesarios para cumplir su función, y nada más. <b>Para qué importa:</b> Si una cuenta se ve comprometida, limita drásticamente el daño que el atacante puede causar.</p></div></details>
-    <details data-cat="defensa"><summary>Zero Trust (Confianza Cero) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Modelo de seguridad bajo el lema <em>"nunca confíes, siempre verifica"</em>. Ningún usuario o dispositivo es confiable por defecto, ni siquiera dentro de la red interna de la oficina. <b>Para qué importa:</b> Adapta la seguridad al trabajo remoto y la nube.</p></div></details>
-    <details data-cat="defensa"><summary>Autenticación Multifactor (MFA / 2FA) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Exigir dos o más factores distintos para iniciar sesión: algo que sabes (contraseña), algo que tienes (app autenticadora o llave física YubiKey) y algo que eres (huella/rostro). <b>Para qué importa:</b> Bloquea más del 99% de los ataques automatizados de robo de cuentas.</p></div></details>
-    <details data-cat="defensa"><summary>Hardening (Endurecimiento) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Proceso de asegurar un sistema reduciendo su superficie de ataque: desactivar puertos y servicios innecesarios, cambiar claves por defecto y aplicar configuraciones seguras (guías CIS). <b>Para qué importa:</b> Cierra las puertas fáciles antes de que alguien las pruebe.</p></div></details>
-    <details data-cat="defensa"><summary>OSINT (Open Source Intelligence) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Recopilación y análisis de información obtenida de fuentes públicas legales (redes sociales, registros DNS, certificados, metadatos, buscadores). <b>Para qué importa:</b> Sirve tanto para investigar amenazas como para auditar qué expone tu propia empresa.</p></div></details>
-    <details data-cat="defensa"><summary>Red Team, Blue Team y Purple Team <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> <em>Red Team</em> simula adversarios reales para poner a prueba las defensas; <em>Blue Team</em> defiende, monitorea y responde; <em>Purple Team</em> une a ambos para mejorar continuamente las reglas de detección.</p></div></details>
-    <details data-cat="defensa"><summary>DFIR (Digital Forensics and Incident Response) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Disciplina combinada de respuesta rápida para detener un ataque y análisis forense riguroso para reconstruir la línea de tiempo con validez legal. <b>Para qué importa:</b> Permite saber qué ocurrió exactamente y evitar que vuelva a pasar.</p></div></details>
-    <details data-cat="defensa"><summary>IoC (Indicadores de Compromiso) <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Evidencias técnicas que demuestran que un sistema fue atacado: direcciones IP maliciosas, hashes de archivos infectados, dominios de comando y control (C2) o claves de registro alteradas. <b>Para qué importa:</b> Permiten buscar rápidamente si otros equipos tienen la misma infección.</p></div></details>
-    <details data-cat="defensa"><summary>ISO/IEC 27001 y NIST CSF <span class="term-cat">Defensa &amp; GRC</span></summary><div><p><b>Qué es:</b> Marcos internacionales de gestión de seguridad. <em>ISO 27001</em> certifica sistemas de gestión de seguridad de la información (SGSI); <em>NIST CSF</em> estructura la defensa en 6 funciones: Gobernar, Identificar, Proteger, Detectar, Responder y Recuperar.</p></div></details>
-  </div>
-</section>
-
-<!-- 6. HOJAS DE REFERENCIA (CHEATSHEETS) -->
-<section id="referencias">
-  <h2>⚡ Hojas de Referencia Rápida (Cheatsheets)</h2>
-  <p class="lead">Comandos y datos técnicos de consulta diaria para auditoría, administración y diagnóstico.</p>
-  <p class="warn"><b>⚠️ Recordatorio operativo:</b> Usa técnicas de escaneo activo únicamente sobre redes propias o con autorización escrita. Los escaneos agresivos pueden saturar dispositivos antiguos o activar alertas de seguridad.</p>
-
-  <!-- PUERTOS COMUNES -->
-  <div class="ref">
-    <h3>Puertos TCP/UDP Imprescindibles</h3>
-    <p class="d">Memorizar estos puertos te permitirá identificar de inmediato qué servicios ofrece un servidor al leer un escaneo.</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Puerto</th><th>Protocolo / Servicio</th><th>Función y Riesgo Común</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><code>21</code></td><td>FTP</td><td>Transferencia de archivos sin cifrar. Riesgo de acceso anónimo o robo de credenciales en texto plano.</td></tr>
-          <tr><td><code>22</code></td><td>SSH</td><td>Administración remota segura cifrada. Objetivo frecuente de fuerza bruta si no usa llaves SSH.</td></tr>
-          <tr><td><code>23</code></td><td>Telnet</td><td>Consola remota sin cifrar (obsoleta). Todo viaja en texto plano; debe reemplazarse por SSH.</td></tr>
-          <tr><td><code>25 / 587</code></td><td>SMTP</td><td>Envío de correo electrónico. Mal configurado permite suplantación de remitente (spoofing).</td></tr>
-          <tr><td><code>53</code></td><td>DNS (TCP/UDP)</td><td>Resolución de nombres de dominio. TCP se usa para transferencias de zona (AXFR).</td></tr>
-          <tr><td><code>80 / 443</code></td><td>HTTP / HTTPS</td><td>Tráfico web sin cifrar (80) y cifrado con TLS (443). Principal superficie de ataques web.</td></tr>
-          <tr><td><code>139 / 445</code></td><td>SMB</td><td>Compartición de archivos e impresoras en Windows/Samba. Vector histórico de ransomware y movimiento lateral.</td></tr>
-          <tr><td><code>389 / 636</code></td><td>LDAP / LDAPS</td><td>Consultas a servicios de directorio como Active Directory.</td></tr>
-          <tr><td><code>3306 / 5432</code></td><td>MySQL / PostgreSQL</td><td>Motores de bases de datos relacionales. Nunca deberían estar expuestos directamente a internet.</td></tr>
-          <tr><td><code>3389</code></td><td>RDP</td><td>Escritorio remoto de Windows. Muy atacado si se expone sin VPN ni MFA.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- NMAP -->
-  <div class="ref">
-    <h3>Nmap: Reconocimiento y Escaneo de Redes</h3>
-    <p class="d">Las combinaciones de parámetros más efectivas para mapear hosts, servicios y vulnerabilidades.</p>
-    <div class="cmd"><code>nmap -sn 192.168.1.0/24</code><span>Ping Sweep: descubre qué equipos están activos en la subred sin escanear puertos.</span></div>
-    <div class="cmd"><code>nmap -sS -Pn -p- --min-rate 3000 192.168.1.10</code><span>Escaneo SYN rápido de los 65,535 puertos TCP omitiendo el descubrimiento por ping (<code>-Pn</code>).</span></div>
-    <div class="cmd"><code>nmap -sC -sV -p 22,80,445 -oA reporte_inicial 192.168.1.10</code><span>Ejecuta scripts por defecto (<code>-sC</code>), detecta versiones (<code>-sV</code>) en puertos específicos y guarda en 3 formatos (<code>-oA</code>).</span></div>
-    <div class="cmd"><code>nmap -sU --top-ports 50 192.168.1.10</code><span>Escanea los 50 puertos UDP más comunes (DNS, SNMP, DHCP, NTP).</span></div>
-    <div class="cmd"><code>nmap --script vuln -p 445 192.168.1.10</code><span>Ejecuta scripts NSE para detectar vulnerabilidades conocidas en un puerto específico (ej. EternalBlue en SMB).</span></div>
-  </div>
-
-  <!-- LINUX -->
-  <div class="ref">
-    <h3>Linux: Terminal, Archivos, Permisos y Procesos</h3>
-    <p class="d">Comandos esenciales para moverte, buscar evidencia y administrar cualquier sistema Linux.</p>
-    <div class="cmd"><code>ls -lah</code><span>Lista todos los archivos (incluidos ocultos), permisos y tamaños legibles (KB/MB/GB).</span></div>
-    <div class="cmd"><code>find / -perm -4000 -type f 2>/dev/null</code><span>Busca archivos con bit SUID activado (técnica clásica para escalar privilegios en Linux).</span></div>
-    <div class="cmd"><code>grep -rnw '/var/log/' -e 'Failed password'</code><span>Busca recursivamente intentos fallidos de inicio de sesión dentro de los registros del sistema.</span></div>
-    <div class="cmd"><code>chmod 600 clave_privada.pem</code><span>Restringe permisos para que solo el propietario pueda leer y escribir el archivo (obligatorio para llaves SSH).</span></div>
-    <div class="cmd"><code>ps aux | grep -i apache</code><span>Lista todos los procesos en ejecución y filtra los relacionados con un servicio específico.</span></div>
-    <div class="cmd"><code>ss -tulpn</code><span>Muestra todos los puertos TCP/UDP en escucha y el PID/nombre del programa que los tiene abiertos.</span></div>
-  </div>
-
-  <!-- REDES, DNS Y WEB -->
-  <div class="ref">
-    <h3>Diagnóstico de Red, DNS y Peticiones Web</h3>
-    <p class="d">Herramientas nativas de línea de comandos para inspeccionar dominios, cabeceras HTTP y conexiones.</p>
-    <div class="cmd"><code>dig dominio.com ANY +noall +answer</code><span>Consulta registros DNS (A, MX, TXT, NS) directamente desde la terminal.</span></div>
-    <div class="cmd"><code>curl -I -L https://ejemplo.com</code><span>Obtiene únicamente las cabeceras HTTP de respuesta siguiendo redirecciones (útil para revisar CSP, HSTS y servidor).</span></div>
-    <div class="cmd"><code>nc -lvnp 4444</code><span>Pone Netcat en modo escucha en el puerto 4444 (usado en laboratorios para recibir conexiones o transferir datos).</span></div>
-    <div class="cmd"><code>python3 -m http.server 8000</code><span>Levanta un servidor web temporal en el directorio actual para transferir herramientas hacia una máquina de laboratorio.</span></div>
-  </div>
-</section>
-
-<!-- 7. ACERCA -->
-<section id="acerca">
-  <h2>👨‍💻 Acerca de este proyecto</h2>
-  <p class="lead">Proyecto educativo y comunitario desarrollado por <strong>BLACKFOX08</strong>, estudiante de ciberseguridad desde República Dominicana 🇩🇴. Esta guía evoluciona continuamente con apuntes técnicos, metodologías de estudio y prácticas de laboratorio para ayudar a la comunidad hispanohablante a entrar en el mundo de la seguridad informática con bases sólidas y éticas.</p>
-</section>
+<section id="recursos"><h2>Páginas web</h2><p class="lead">Sitios para practicar, aprender, consultar y mantenerte al día. Filtra por tipo.</p><div id="rl"></div></section>
+<section id="sistemas"><h2>Sistemas operativos</h2><p class="lead">Los que vas a instalar en máquinas virtuales o en tu homelab.</p><div id="sl"></div></section>
+<section id="lenguajes"><h2>Lenguajes de programación</h2><p class="lead">No necesitas todos. Empieza con Python y Bash, y suma según lo que te guste.</p><div id="pl"></div></section>
+<section id="youtube"><h2>Canales de YouTube</h2><p class="lead">Activa subtítulos y velocidad 0.75x–1x si lo necesitas.</p><div id="yl"></div></section>
+<section id="libros"><h2>Libros</h2><p class="lead">Úsalos como consulta: un capítulo corto al día basta. Los narrativos se leen o escuchan con menos esfuerzo.</p><div id="ll"></div></section>
+<section id="cine"><h2>Películas, series y anime</h2><p class="lead">Ficción y documentales para inspirarte. Recuerda que el cine exagera: en la vida real, hackear es mucho más lento.</p><div id="vl"></div></section>
+<section id="certs"><h2>Certificaciones</h2><p class="lead">Elige una principal y una especialidad. No acumules certificaciones sin práctica. Verifica costos y requisitos en cada página oficial.</p><div id="cl"></div></section>
+<section id="insignias"><h2>Insignias y constancias: qué puedes lograr y dónde</h2><p class="lead">Muchas se obtienen gratis al terminar cursos. Sirven para tu perfil de LinkedIn y tu portafolio.</p><div id="il"></div></section>
+<section><h2>Acerca de este sitio</h2><p class="lead">Un proyecto comunitario de BLACKFOX08, estudiante de ciberseguridad desde República Dominicana. Está en construcción y crece con lo que voy aprendiendo. Si ves un error o quieres sugerir un tema, abre un issue en el repositorio. En República Dominicana, atacar sistemas ajenos es delito (Ley 53-07).</p></section>
 </main>
-
-<footer>
-  <span>Contenido educativo para formación ética y profesional en ciberseguridad.</span>
-  <span>Desarrollado por <strong>BLACKFOX08</strong> • República Dominicana</span>
-</footer>
+<footer>Contenido educativo. Úsalo de forma ética y legal. <!-- Agrega aquí tus enlaces de GitHub y LinkedIn --></footer>
 
 <script>
-(function(){
-  const input = document.getElementById('buscar');
-  const buttons = document.querySelectorAll('.cat-btn');
-  const items = document.querySelectorAll('#lista details');
-  const counter = document.getElementById('contador');
-  let activeCat = 'todos';
+var $=function(i){return document.getElementById(i)};
+function E(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+var ruta=[["Redes","Direcciones IP, puertos, DNS, HTTP y SSH. Sirve para entender qué se ataca y qué se protege."],["Linux y terminal","Carpetas, archivos, permisos y procesos. Casi todas las herramientas de seguridad corren en Linux."],["Fundamentos","Pilares CIA, amenaza vs. vulnerabilidad vs. riesgo, controles y Zero Trust."],["Criptografía","Cifrado simétrico y asimétrico, hash y firmas. Base de TLS y de las contraseñas."],["Seguridad web","Inyección SQL, XSS, CSRF e IDOR, y cómo se corrigen."],["Herramientas básicas","Nmap, Burp Suite, Wireshark y CyberChef para pasar de la teoría a la práctica."],["Práctica guiada","TryHackMe, Hack The Box Academy y OWASP Juice Shop, sin tocar sistemas ajenos."],["Defensa y respuesta","Logs, SIEM, Wazuh y las 6 fases de respuesta a incidentes (NIST 800-61)."]];
+$("ruta-l").innerHTML=ruta.map(function(r){return '<div class="item step"><h3>'+r[0]+'</h3><p>'+r[1]+'</p></div>'}).join("");
+var est=[["Bloques de 25 min","25 minutos de estudio y 5 de descanso, máximo 3 seguidos. Si cuesta, empieza con 15 + 5."],["Ciclo por lección","Mira los títulos, escucha o lee, resume en 5 líneas, crea flashcards y repasa."],["Una idea por tarjeta","Anki o Quizlet. Crea una tarjeta por sigla (CIA, SIEM, SOAR, RTO) y repásala a diario."],["Aprende haciendo","Cada módulo cierra con un laboratorio: CyberChef, Wireshark, Wazuh, Juice Shop."],["Quiz con 80%","No avances hasta superar 80% en el quiz del módulo. Si falla, repite la semana."],["Apoyos de lectura","Lectura en voz alta (Edge, NaturalReader), fuentes Lexend u OpenDyslexic y videos a 0.75x con subtítulos."],["Mal día","Haz solo 15 minutos de flashcards. Un día malo no rompe el plan, abandonarlo sí."],["Antes del examen","Tres simulacros seguidos con 80–85% o más. Pide ajustes de tiempo al registrarte si los necesitas."]];
+$("est-l").innerHTML=est.map(function(r){return '<div class="item"><h3>'+r[0]+'</h3><p>'+r[1]+'</p></div>'}).join("");
+var plan="1|M1 Conceptos y pilares CIA|Mapa mental + TryHackMe Pre Security;2|M1 Controles y modelos|Tabla de controles;3|M2 Gobernanza, riesgo y PKI|Matriz de riesgos y cálculo de ALE;4|M3 Criptografía|Laboratorio en CyberChef;5|M4 Modelo OSI|Captura con Wireshark;6|M4 Protocolos y dispositivos|VLANs y firewall en homelab;7|M5 Logs, SIEM, incidentes|Wazuh con un agente;8|M6 Automatización|Script que cuenta logins fallidos;9|M7 Hardening|Checklist de hardening;10|M7 Web y OWASP|5 retos en Juice Shop;11|Repaso general|3 simulacros completos";
+$("plan").innerHTML=plan.split(";").map(function(r){return "<tr>"+r.split("|").map(function(c){return "<td>"+c+"</td>"}).join("")+"</tr>"}).join("");
+$("rep").innerHTML=["Día 1","Día 3","Día 7","Día 14","Día 30"].map(function(x){return '<span class="chip" style="cursor:default">'+x+'</span>'}).join("");
+var T=("nmap|Reconocimiento|Escáner de puertos y servicios. Primer paso de casi todo pentest.|OSCP, eJPT, CEH, PNPT;masscan|Reconocimiento|Escáner de puertos ultrarrápido para rangos enormes de IP.|OSCP;RustScan|Reconocimiento|Escaneo muy rápido en Rust que pasa el resultado a Nmap.|—;subfinder|Reconocimiento|Encuentra subdominios sin tocar el objetivo.|PNPT;amass|Reconocimiento|Mapea la superficie de ataque de un dominio (OWASP).|PNPT, OSWE;httprobe|Reconocimiento|De una lista de dominios, indica cuáles tienen web activa.|—;gowitness|Reconocimiento|Captura pantallas de cientos de sitios para revisarlos rápido.|—;katana|Reconocimiento|Recorre un sitio y extrae todas sus URLs.|OSWE, eWPT;fping|Redes|Hace ping a muchas IP a la vez para ver qué equipos están vivos.|Network+;Wireshark|Redes|Captura y analiza paquetes de red.|Security+, CySA+, eJPT;iperf3|Redes|Mide el ancho de banda real entre dos equipos.|Network+;ffuf / feroxbuster|Web|Fuerza bruta de directorios, archivos y parámetros ocultos.|OSCP, eJPT, OSWE;nuclei|Web|Escáner de vulnerabilidades por plantillas (miles de CVE).|PNPT, bug bounty;Burp Suite|Web|Proxy para interceptar, repetir y automatizar ataques web. Estándar de la industria.|BSCP, OSWE, eWPT;OWASP ZAP|Web|Proxy y escáner web gratuito de OWASP.|eWPT, OSWE;mitmproxy|Web|Proxy de interceptación HTTP/HTTPS en terminal.|eWPT;dalfox|Web|Encuentra y confirma XSS de forma automática.|OSWE, eWPT;jwt_tool|Web|Analiza y prueba si un JSON Web Token es falsificable.|OSWE;testssl.sh|Web|Audita certificados y cifrados TLS/SSL de un servidor.|Security+, PNPT;sherlock|OSINT|Busca un nombre de usuario en cientos de sitios.|CEH, PNPT;holehe|OSINT|Revisa en qué servicios está registrado un correo.|CEH;h8mail|OSINT|Busca correos en filtraciones de datos.|OSINT general;spiderfoot|OSINT|Plataforma de OSINT automatizado con más de 200 módulos.|CEH;Shodan|OSINT|Buscador de dispositivos y servidores expuestos en internet.|PNPT;Name-That-Hash|Contraseñas|Identifica qué algoritmo generó un hash.|OSCP;hashcat / John|Contraseñas|Crackean hashes con diccionarios y reglas.|OSCP;CUPP|Contraseñas|Genera diccionarios personalizados.|OSCP;Medusa / Patator|Contraseñas|Fuerza bruta contra servicios de login.|OSCP;Wazuh|Defensa|SIEM y detección de amenazas gratuito.|BTL1, CySA+;Lynis|Defensa|Audita la configuración de Linux y da un puntaje.|Security+, CySA+;fail2ban|Defensa|Bloquea IP tras varios intentos fallidos de login.|Security+, BTL1;UFW|Defensa|Interfaz sencilla del firewall de Linux.|Security+;rkhunter / chkrootkit|Defensa|Detectan rootkits en tu equipo.|GCIH, BTL1;trivy|Defensa|Busca CVE en imágenes Docker e infraestructura como código.|CKS;CyberChef|Base|Cifra, codifica y hashea datos en el navegador.|Security+;Git|Base|Control de versiones. Casi toda herramienta se instala con git clone.|Habilidad base;Python3 + pip|Base|Lenguaje para automatizar y escribir exploits.|OSCP, eJPT;Bash|Base|Scripts y one-liners en Linux.|OSCP;pipx|Base|Instala herramientas de Python sin romper dependencias.|Higiene de sistema").split(";").map(function(x){return x.split("|")});
+var cat="Todas",cats=["Todas"];T.forEach(function(t){if(cats.indexOf(t[1])<0)cats.push(t[1])});
+function rt(){var q=$("bt").value.toLowerCase().trim();var l=T.filter(function(t){return(cat=="Todas"||t[1]==cat)&&(t.join(" ").toLowerCase().indexOf(q)>-1)});
+$("tl").innerHTML=l.length?l.map(function(t){return '<div class="item"><span class="tag">'+t[1]+'</span><h3>'+E(t[0])+'</h3><p>'+t[2]+'</p><small>Certificación: '+t[3]+'</small></div>'}).join(""):'<p class="empty">Sin resultados. Prueba otra palabra.</p>'}
+$("tc").innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c==cat)+'">'+c+'</button>'}).join("");
+$("tc").addEventListener("click",function(e){if(e.target.tagName!="BUTTON")return;cat=e.target.textContent;[].forEach.call($("tc").children,function(b){b.setAttribute("aria-pressed",b.textContent==cat)});rt()});
+$("bt").addEventListener("input",rt);rt();$("n1").textContent=T.length;
+var G=("Vulnerabilidad|Fallo en un sistema o programa que podría usarse para entrar o hacer daño.;Amenaza|Cualquier cosa que puede dañar un activo. No es la debilidad, es lo que la aprovecha.;Riesgo|Probabilidad de que una amenaza aproveche una vulnerabilidad, por el impacto que causaría.;Exploit|Método o código que aprovecha una vulnerabilidad. Por eso conviene actualizar.;CVE|Número único que identifica una vulnerabilidad conocida.;CVSS|Puntaje de 0 a 10 que mide la gravedad de una vulnerabilidad.;Phishing|Engaño por correo o mensaje para que entregues datos o hagas clic en un enlace falso.;Ingeniería social|Manipular a personas, no a sistemas, para obtener acceso o información.;Malware|Cualquier programa hecho para dañar o espiar: virus, troyanos, ransomware.;Ransomware|Programa que cifra tus archivos y pide dinero. La mejor defensa son las copias de seguridad.;Troyano|Programa que parece legítimo pero abre una puerta oculta.;Botnet|Red de equipos infectados controlados a distancia por un atacante.;DDoS|Ataque que satura un servicio con tráfico para dejarlo sin responder.;Firewall|Filtro que decide qué conexiones entran y salen.;IDS / IPS|IDS detecta y avisa. IPS detecta y bloquea.;WAF|Firewall que protege aplicaciones web contra SQLi y XSS.;VPN|Túnel cifrado entre tu equipo y otra red.;Proxy|Intermediario del tráfico. En pentest permite interceptar y modificar peticiones.;2FA / MFA|Pedir más de un factor distinto, como contraseña y código del celular.;Hash|Huella única calculada de un dato. No se puede revertir. Sirve para integridad y contraseñas.;Salt (sal)|Dato aleatorio que se añade antes de hashear una contraseña.;Cifrado simétrico|Misma llave para cifrar y descifrar (AES). Rápido.;Cifrado asimétrico|Par de llaves, pública y privada (RSA, ECC). Sirve para intercambiar llaves y firmar.;Firma digital|Hash cifrado con tu llave privada. Da integridad, autenticidad y no repudio.;TLS|Protocolo que cifra la conexión HTTPS.;PKI|Infraestructura de certificados y autoridades que sostiene la confianza en TLS.;CIA|Confidencialidad, Integridad y Disponibilidad: los tres pilares de la seguridad.;Zero Trust|Nunca confiar, siempre verificar, incluso dentro de la red interna.;Mínimo privilegio|Dar a cada usuario solo los permisos que necesita.;Defensa en profundidad|Varias capas de control para que un fallo no baste.;DMZ|Zona intermedia de red para servidores expuestos a internet.;VLAN|Red virtual que separa equipos en la misma infraestructura física.;SIEM|Sistema que recolecta, normaliza y correlaciona logs para generar alertas.;SOAR|Automatiza la respuesta a alertas con playbooks.;SOC|Centro de operaciones de seguridad: el equipo que vigila y responde.;EDR / XDR|Software que detecta y responde a amenazas en los equipos.;Honeypot|Señuelo para estudiar a los atacantes.;Falso positivo|Alerta que parece ataque pero no lo es. Cansa a los analistas.;OSINT|Investigar usando solo información pública.;Red team / Blue team|Red simula ataques. Blue defiende. Purple los une.;Pentest|Ataque controlado y autorizado para encontrar fallos.;Bug bounty|Programa que paga por reportar vulnerabilidades de forma responsable.;CTF|Competencia de captura la bandera para practicar hacking.;Payload|Parte de un ataque que ejecuta la acción dañina.;Reverse shell|Conexión que la víctima abre hacia el atacante para darle una terminal.;Escalada de privilegios|Pasar de un usuario normal a administrador o root.;Inyección SQL|Manipular una consulta a la base de datos mediante datos de entrada.;XSS|Ejecutar script malicioso en el navegador de otra persona.;CSRF|Forzar una acción desde la sesión de la víctima.;IDOR|Acceder a datos de otros cambiando un identificador en la URL.;SSRF|Hacer que el servidor haga peticiones por el atacante, por ejemplo a redes internas.;Fuzzing|Enviar muchos datos inesperados para encontrar fallos u objetos ocultos.;Fuerza bruta|Probar combinaciones hasta acertar una contraseña.;Credential stuffing|Probar contraseñas filtradas en otros servicios.;Man-in-the-middle|Atacante que se coloca entre dos partes para espiar o alterar el tráfico.;ARP spoofing|Engañar a la red sobre qué dirección MAC corresponde a una IP.;Rootkit|Malware oculto que mantiene acceso privilegiado.;Zero-day|Vulnerabilidad sin parche conocida por el fabricante.;Parche|Actualización que corrige una vulnerabilidad.;Hardening|Reforzar un sistema quitando lo innecesario y ajustando su configuración.;DFIR|Análisis forense digital y respuesta a incidentes.;Cadena de custodia|Registro de quién tuvo la evidencia, cuándo y qué hizo con ella.;BIA / BCP / DRP|BIA mide impacto. BCP mantiene el negocio. DRP recupera los sistemas.;RTO / RPO|RTO: tiempo máximo para recuperar. RPO: cuántos datos puedes perder, en tiempo.;ALE|Pérdida anual esperada = SLE × ARO.;Backup 3-2-1|3 copias, 2 tipos de medio y 1 fuera del sitio.;IaC|Infraestructura como código: configurar servidores con archivos versionados.;SAST / DAST|SAST analiza el código sin ejecutarlo. DAST prueba la app en ejecución.;OWASP Top 10|Lista de los 10 riesgos web más críticos.;MITRE ATT&CK|Catálogo de tácticas y técnicas reales de atacantes.").split(";").map(function(x){var i=x.indexOf("|");return[x.slice(0,i),x.slice(i+1)]});
+G.sort(function(a,b){return a[0].localeCompare(b[0],"es")});$("n2").textContent=G.length;
+function rg(){var q=$("bg").value.toLowerCase().trim();var l=G.filter(function(g){return(g[0]+" "+g[1]).toLowerCase().indexOf(q)>-1});$("gl").innerHTML=l.length?l.map(function(g){return '<details><summary>'+g[0]+'</summary><div>'+g[1]+'</div></details>'}).join(""):'<p class="empty">No hay ese término. Prueba con otra palabra.</p>'}
+$("bg").addEventListener("input",rg);rg();
+function cm(a){return a.map(function(c){return '<div class="cmd"><code>'+E(c[0])+'</code><span>'+c[1]+'</span></div>'}).join("")}
+$("c1").innerHTML=cm([["nmap -sn 192.168.1.0/24","Descubre equipos activos, sin escanear puertos."],["nmap 192.168.1.10","Escanea los 1000 puertos más comunes."],["nmap -sV 192.168.1.10","Detecta servicio y versión de cada puerto abierto."],["nmap -sC -sV -oN res.txt 192.168.1.10","Scripts básicos, versiones y guarda el resultado."],["nmap -p- 192.168.1.10","Revisa los 65535 puertos. Tarda más, no deja nada fuera."]]);
+$("c2").innerHTML=cm([["pwd","Muestra en qué carpeta estás."],["ls -la","Lista archivos, incluidos ocultos, con permisos."],["cd /ruta","Entra a otra carpeta."],["cat archivo.txt","Muestra el contenido de un archivo."],["grep \"texto\" archivo.txt","Busca una palabra dentro de un archivo."],["chmod 600 archivo","Solo el dueño puede leerlo."],["ip a","Muestra tus direcciones IP."],["ss -tulpn","Puertos abiertos y el programa que los usa."]]);
+$("pt").innerHTML="20, 21|FTP|No;22|SSH y SFTP|Sí;23|Telnet|No;25|SMTP|No, sin TLS;53|DNS|Depende;80|HTTP|No;110|POP3|No;143|IMAP|No;443|HTTPS|Sí;445|SMB|Riesgoso si se expone;3389|RDP|Riesgoso si se expone".split(";").map(function(r){return "<tr>"+r.split("|").map(function(c){return "<td>"+c+"</td>"}).join("")+"</tr>"}).join("");
 
-  function filterGlossary(){
-    const query = input.value.toLowerCase().trim();
-    let visible = 0;
-
-    items.forEach(item => {
-      const cat = item.getAttribute('data-cat');
-      const text = item.textContent.toLowerCase();
-      const matchesCat = (activeCat === 'todos' || cat === activeCat);
-      const matchesText = (query === '' || text.includes(query));
-
-      if(matchesCat && matchesText){
-        item.style.display = '';
-        visible++;
-      } else {
-        item.style.display = 'none';
-      }
-    });
-
-    counter.textContent = `Mostrando ${visible} de ${items.length} términos técnicos`;
-  }
-
-  input.addEventListener('input', filterGlossary);
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeCat = btn.getAttribute('data-cat');
-      filterGlossary();
-    });
-  });
-
-  filterGlossary();
-})();
+function fx(id,s){var d=s.split(";").map(function(x){return x.split("|")}),cs=["Todo"],cur="Todo",el=$(id);d.forEach(function(p){if(cs.indexOf(p[1])<0)cs.push(p[1])});
+el.innerHTML='<div class="chips"></div><div class="grid"></div>';var ch=el.firstChild,gr=el.lastChild;
+function r(){ch.innerHTML=cs.map(function(c){return '<button class="chip" aria-pressed="'+(c==cur)+'">'+c+'</button>'}).join("");gr.innerHTML=d.filter(function(p){return cur=="Todo"||p[1]==cur}).map(function(p){return '<div class="item"><span class="tag c'+(cs.indexOf(p[1])%4)+'">'+p[1]+'</span><h3>'+E(p[0])+'</h3><p>'+p[2]+'</p></div>'}).join("")}
+ch.addEventListener("click",function(e){if(e.target.tagName=="BUTTON"){cur=e.target.textContent;r()}});r()}
+fx("rl","TryHackMe|Práctica|Salas guiadas. La ruta Pre Security es ideal para empezar.;Hack The Box Academy|Práctica|Módulos y Starting Point en su capa gratuita.;OWASP Juice Shop|Práctica|Tienda vulnerable a propósito para practicar ataques web.;PortSwigger Web Security Academy|Práctica|Laboratorios gratis de inyección SQL, XSS y más.;picoCTF|Práctica|Retos CTF para principiantes.;OverTheWire (Bandit)|Práctica|Aprende Linux resolviendo niveles por terminal.;Root Me|Práctica|Cientos de retos de hacking en varios idiomas.;VulnHub|Práctica|Máquinas vulnerables para descargar y atacar en tu laboratorio.;Hacker101|Práctica|Curso y retos gratis de seguridad web de HackerOne.;LetsDefend|Defensa|Simula el trabajo de un analista SOC.;CyberDefenders|Defensa|Laboratorios de análisis de incidentes y forense.;Blue Team Labs Online|Defensa|Retos defensivos, con capa gratuita.;Professor Messer|Curso|Videos gratis y muy claros para Security+.;Cisco Networking Academy|Curso|Intro to Cybersecurity y Cybersecurity Essentials, gratis.;Microsoft Learn|Curso|Rutas gratuitas de SC-900 y AZ-900.;freeCodeCamp y CS50|Curso|Python, SQL, Linux y bases de informática.;Linux Journey|Curso|Lecciones cortas de Linux para practicar a diario.;Cybrary|Curso|Cursos de seguridad, con capa gratuita.;NIST CSF 2.0|Consulta|Marco de ciberseguridad y guía SP 800-61 de incidentes.;OWASP Top 10|Consulta|Los 10 riesgos web más críticos y sus cheat sheets.;MITRE ATT&CK|Consulta|Catálogo de tácticas y técnicas de atacantes reales.;Exploit-DB|Consulta|Base de datos de exploits y vulnerabilidades públicas.;GTFOBins|Consulta|Binarios de Linux que sirven para escalar privilegios.;ExplainShell|Consulta|Pega un comando y te explica cada parte.;VirusTotal|Herramienta web|Analiza archivos y URL con decenas de antivirus.;Have I Been Pwned|Herramienta web|Revisa si tu correo apareció en una filtración.;Shodan|Herramienta web|Buscador de dispositivos expuestos en internet.;Krebs on Security|Noticias|Periodismo de investigación sobre ciberdelito.;The Hacker News|Noticias|Noticias diarias de ciberseguridad.;BleepingComputer|Noticias|Noticias de malware, brechas y parches.;Reddit y Discord|Comunidad|r/cybersecurity, r/netsec, r/homelab y los Discord de THM y HTB.;INFOTEP, ITLA e INDOTEL|Local RD|Cursos y becas de informática y seguridad en República Dominicana");
+fx("sl","Kali Linux|Ofensivo|Distribución con herramientas de pentest preinstaladas. Úsala en máquina virtual.;Parrot OS|Ofensivo|Alternativa a Kali, más ligera y con enfoque en privacidad.;REMnux|Análisis|Linux para analizar malware.;FLARE VM|Análisis|Entorno Windows con herramientas de análisis de malware.;Security Onion|Defensivo|Monitoreo de red, detección de intrusos y caza de amenazas.;Ubuntu / Debian|Base|Los servidores Linux más comunes. Aprende a administrarlos.;Windows 11 y Server|Base|Active Directory, PowerShell y permisos NTFS son clave en empresas.;Sysinternals|Base|Suite de Microsoft para ver procesos, conexiones y registro.;Tails|Privacidad|Sistema que arranca desde USB y no deja rastro. Usa Tor.;Qubes OS|Privacidad|Aísla cada actividad en máquinas virtuales separadas.;pfSense / OPNsense|Redes|Firewall y router de código abierto para tu homelab.;Proxmox y VirtualBox|Virtualización|Crea tus laboratorios con máquinas virtuales.;Docker|Virtualización|Contenedores para levantar Juice Shop y otros labs en minutos.;Metasploitable|Práctica|Máquina vulnerable a propósito para practicar sin riesgo");
+fx("pl","Python|Esencial|Automatiza tareas, analiza logs y escribe herramientas. El más usado en seguridad.;Bash|Esencial|Scripts y one-liners en Linux para automatizar.;SQL|Esencial|Entender bases de datos es clave para ver inyección SQL.;PowerShell|Esencial|Administración y automatización en Windows y Active Directory.;JavaScript|Web|Imprescindible para entender XSS y cómo funcionan las apps web.;HTML y CSS|Web|La estructura de las páginas que vas a auditar.;PHP|Web|Muchos sitios vulnerables y CMS usan PHP.;C|Bajo nivel|Memoria, punteros y desbordamientos de búfer.;Assembly|Bajo nivel|Ingeniería inversa y análisis de malware.;Go|Herramientas|Rápido. Muchas herramientas modernas (nuclei, subfinder) están hechas en Go.;Rust|Herramientas|Seguro por diseño. RustScan y muchas herramientas nuevas lo usan.;Ruby|Herramientas|Lenguaje de Metasploit.;YAML / Terraform / Ansible|Automatización|Infraestructura como código y despliegues seguros.;Regex|Apoyo|Expresiones regulares para filtrar logs y datos.");
+fx("yl","The Cyber Mentor|Pentest|Cursos completos de hacking ético en un solo canal.;John Hammond|Pentest|CTF, malware y análisis explicado paso a paso.;IppSec|Pentest|Resoluciones de máquinas de Hack The Box.;LiveOverflow|Pentest|Explicaciones profundas de vulnerabilidades y CTF.;STÖK|Bug bounty|Cacería de bugs y reconocimiento web.;s4vitar|En español|Resolución de máquinas y hacking ético en español.;Hack4u|En español|Cursos de hacking ético en español.;NetworkChuck|Principiantes|Redes, Linux y seguridad de forma divertida.;David Bombal|Principiantes|Entrevistas y tutoriales de redes y hacking.;Professor Messer|Certificaciones|Security+ y A+ completos y gratis.;13Cubed|Defensa|Forense digital y respuesta a incidentes.;Hak5|Hardware|Herramientas físicas de pentest y redes.;Computerphile|Teoría|Conceptos de computación y criptografía bien explicados.;freeCodeCamp.org|Programación|Cursos largos de Python, Linux y redes.;Seytonic|Noticias|Noticias y proyectos de hacking en video corto.");
+fx("ll","The Linux Command Line|Gratis|Terminal y Bash para principiantes.;Crypto 101|Gratis|Criptografía explicada de forma simple.;Automate the Boring Stuff with Python|Gratis|Python práctico desde cero.;Think Python|Gratis|Python para empezar a programar.;Security Engineering (Ross Anderson)|Gratis|Seguridad de sistemas en profundidad.;Linux Basics for Hackers|Pago|Linux orientado a seguridad.;Practical Packet Analysis|Pago|Wireshark paso a paso.;Blue Team Handbook|Pago|Respuesta a incidentes.;The Web Application Hacker’s Handbook|Pago|Seguridad web a fondo.;Serious Cryptography|Pago|Criptografía moderna.;Black Hat Python|Pago|Python aplicado a seguridad ofensiva.;Hacking: The Art of Exploitation|Pago|Bajo nivel y explotación. Nivel avanzado.;CompTIA Security+ Get Certified Get Ahead|Examen|Preparación para Security+.;The Cuckoo’s Egg|Narrativo|Historia real de una investigación de intrusión.;The Phoenix Project|Narrativo|Novela sobre operaciones de TI y DevOps.;Countdown to Zero Day|Narrativo|El caso Stuxnet.;Sandworm|Narrativo|Ataques estatales a infraestructura.;Ghost in the Wires|Narrativo|Memorias del hacker Kevin Mitnick.;The Art of Deception|Narrativo|Ingeniería social, por Kevin Mitnick.;Little Brother|Narrativo|Novela juvenil sobre vigilancia y hackers.;Social Engineering (Hadnagy)|Narrativo|La ciencia de la ingeniería social.");
+fx("vl","Hackers (1995)|Película|Clásico de la cultura hacker.;WarGames (1983)|Película|Un joven casi inicia una guerra con una computadora militar.;Sneakers (1992)|Película|Equipo de expertos en seguridad física y digital.;The Matrix (1999)|Película|Ciencia ficción con guiños reales (usa Nmap).;Snowden (2016)|Película|La historia del exanalista de la NSA.;Blackhat (2015)|Película|Un hacker ayuda a rastrear a un ciberdelincuente.;Who Am I (2014)|Película|Thriller alemán sobre un grupo de hackers.;Mr. Robot|Serie|Muy valorada por su realismo técnico.;Black Mirror|Serie|Tecnología y sociedad en historias cortas.;Silicon Valley|Serie|Comedia sobre startups y tecnología.;Halt and Catch Fire|Serie|Historia de la industria de computadoras.;Person of Interest|Serie|Vigilancia masiva con inteligencia artificial.;Zero Days (2016)|Documental|El caso Stuxnet contado con testigos reales.;Citizenfour (2014)|Documental|Cómo Snowden reveló la vigilancia masiva.;We Are Legion|Documental|La historia del grupo Anonymous.;The Great Hack|Documental|Datos personales y el caso Cambridge Analytica.;Ghost in the Shell|Anime|Cyberpunk clásico sobre identidad y redes.;Serial Experiments Lain|Anime|Una joven y la red mundial. Muy atmosférico.;Psycho-Pass|Anime|Sociedad vigilada por un sistema.;Cyberpunk: Edgerunners|Anime|Estética neón y tecnología extrema");
+fx("cl","CompTIA Security+|Principal|Inicial a intermedia. Ideal entre el mes 4 y el 5.;ISC2 CC|Inicial|Examen de pago. Buena práctica del formato.;Cisco CCST Cybersecurity|Inicial|Curso gratis, examen de pago.;Google Cybersecurity Certificate|Inicial|Ruta guiada en Coursera. Pide ayuda financiera.;Microsoft SC-900|Nube|Fundamentos de seguridad en Microsoft.;AWS Cloud Practitioner|Nube|Base para trabajar con AWS.;CompTIA Network+ / CCNA|Redes|Para especializarte en redes.;CompTIA CySA+|Defensa|Intermedia, para analistas.;Blue Team Level 1|Defensa|Práctica, para SOC.;eJPT|Ofensiva|Inicial práctica de INE.;PNPT|Ofensiva|Pentest práctico de TCM Security.;OSCP|Ofensiva|La práctica más conocida de pentest. Avanzada.;CEH|Ofensiva|Más teórica, de EC-Council.;CISSP|Gestión|Avanzada. Pide años de experiencia.");
+fx("il","Insignias de Cisco Networking Academy|Gratis|Cisco NetAcad. Se obtienen al terminar cada curso.;Fortinet FCF y FCA|Gratis|Fortinet Training Institute. Confirma vigencia tras el cambio de 2026.;Rutas y trofeos de Microsoft Learn|Gratis|Microsoft Learn. El aprendizaje es gratis, el examen oficial tiene costo.;Constancias de AWS Skill Builder|Gratis|AWS Skill Builder. Constancia gratuita, examen de pago.;Insignias de Google Cloud Skills Boost|Gratis|Google Cloud Skills Boost. Gana insignias con laboratorios.;Certificados de TryHackMe|Gratis|TryHackMe. Se obtienen al completar rutas.;Cursos de Splunk|Gratis|Splunk. Cursos en línea de SIEM.;Certificados de freeCodeCamp|Gratis|freeCodeCamp. Python, SQL y más, con proyectos.;Curso de Coursera o edX en modo oyente|Gratis|Coursera y edX. Sin certificado, pero con todo el contenido.;ISC2 CC|Examen de pago|ISC2. El programa gratuito cerró en mayo de 2026.;CompTIA Security+|Examen de pago|CompTIA y Pearson VUE. Pide ajustes de tiempo si los necesitas.;Hack The Box Academy|Pago|Hack The Box. Certificaciones prácticas de pago.;Credly|Perfil|Credly. Guarda y comparte tus insignias digitales en LinkedIn");
+var tl=[["Ruta","#ruta","8 pasos"],["Estudio","#estudio","Plan de 11 semanas"],["Herramientas","#herramientas","Con certificación"],["Glosario","#glosario","Definiciones"],["Referencias","#referencias","Comandos y puertos"],["Páginas web","#recursos","Práctica y consulta"],["Sistemas","#sistemas","Linux y Windows"],["Lenguajes","#lenguajes","Qué aprender"],["YouTube","#youtube","Canales"],["Libros","#libros","Gratis y pago"],["Cine","#cine","Películas y series"],["Certificaciones","#certs","Cuál elegir"],["Insignias","#insignias","Dónde obtenerlas"]];
+$("tiles").innerHTML=tl.map(function(t){return '<a class="tile" href="'+t[1]+'">'+t[0]+'<small>'+t[2]+'</small></a>'}).join("");
+var up=document.createElement("a");up.className="up";up.href="#";up.setAttribute("aria-label","Volver arriba");up.textContent="↑";document.body.appendChild(up);
+var ls=[].slice.call(document.querySelectorAll(".bar a")),io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)ls.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+e.target.id)})})},{rootMargin:"-30% 0px -60% 0px"});
+document.querySelectorAll("section[id]").forEach(function(s){io.observe(s)});
 </script>
 </body>
 </html>
