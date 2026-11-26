@@ -7,7 +7,7 @@ Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, pr
 ## Contenido
 
 - Ruta de aprendizaje y plan de estudio de 11 semanas.
-- Curso interactivo de 10 módulos, seguimiento local de lecciones y quizzes de práctica por módulo.
+- Curso interactivo de 10 módulos, seguimiento local de lecciones, mínimo 30 preguntas de práctica por módulo y examen final aleatorio de 50 preguntas (cinco por módulo).
 - Catálogo de más de 600 herramientas/plataformas y glosario de más de 1.000 términos, con filtros, paginación y búsqueda global.
 - Páginas de práctica, sistemas operativos, guía de lenguajes vigentes y heredados, arquitectura de redes y canales educativos.
 - Más de 50 lecturas, películas, series, anime, videojuegos y simuladores educativos; certificaciones e insignias con enlaces a sus proveedores.
