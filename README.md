@@ -10,11 +10,11 @@ Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, pr
 - Curso interactivo de 10 módulos, seguimiento local de lecciones y quizzes de práctica por módulo.
 - Catálogo de más de 600 herramientas/plataformas y glosario de más de 1.000 términos, con filtros, paginación y búsqueda global.
 - Páginas de práctica, sistemas operativos, guía de lenguajes vigentes y heredados, arquitectura de redes y canales educativos.
-- Más de 50 lecturas, películas, series y anime; certificaciones e insignias con enlaces a sus proveedores.
+- Más de 50 lecturas, películas, series, anime, videojuegos y simuladores educativos; certificaciones e insignias con enlaces a sus proveedores.
 - Hojas de referencia de Nmap, Linux y puertos de red.
 - Marco legal dominicano e internacional, tabla de referencia por jurisdicción, estándares y protocolo ético-legal para auditorías.
 - Inicio tipo dashboard con vistas detalladas por módulo, navegación por hash, búsqueda global y diseño adaptado a móviles.
-- Ilustraciones proporcionadas para el proyecto en `assets/`; se cargan localmente, sin hotlinks externos.
+- Logo e ilustraciones proporcionados para el proyecto en `assets/`; se cargan localmente, sin hotlinks externos.
 
 Los catálogos se cargan desde `data/` y usan filtros, paginación y fuentes atribuidas. Consulta [data/SOURCES.md](data/SOURCES.md) para procedencia y licencias. Parte del glosario está originalmente en inglés y se etiqueta como tal; no se presenta como traducción. Los títulos oficiales de las lecciones de los módulos 2–10 se conservan según lo aportado por el usuario; los títulos del módulo 1 se identifican como propuestas.
 
