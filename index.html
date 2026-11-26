@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#161112">
+<meta name="theme-color" content="#150d13">
 <title>FOXSEC — aprende ciberseguridad</title>
 <meta name="description" content="FOXSEC: hub gratuito en español para aprender ciberseguridad con rutas, laboratorios, herramientas, glosario, recursos y marco legal.">
 <link rel="icon" type="image/svg+xml" href="assets/foxsec-icon.svg">
@@ -23,11 +23,11 @@
 <meta name="twitter:description" content="Aprende ciberseguridad en español con una ruta progresiva y práctica ética.">
 <meta name="twitter:image" content="https://blackspaces0.github.io/assets/foxsec-social-preview.png">
 <style>
-:root{--bg:#161112;--s1:#1f1819;--s2:#271f20;--s3:#31282a;--on:#efe0e0;--var:#d7c2c3;--out:#a08c8d;--p:#ffb3b6;--onp:#561e24;--pc:#732f36;--opc:#ffdad9;--t:#e9c176;--ont:#3f2e04;--r:28px}
-@media (prefers-color-scheme:light){:root{--bg:#fff8f7;--s1:#fbeeed;--s2:#f6e6e5;--s3:#f0dede;--on:#231919;--var:#534343;--out:#857373;--p:#9a4047;--onp:#fff;--pc:#ffdad9;--opc:#40000a;--t:#6f5100;--ont:#fff}}
+:root{--bg:#150d13;--s1:#1d1319;--s2:#231920;--s3:#2e232b;--on:#f0dee6;--var:#d4c1ca;--out:#b2a1aa;--outline:#9d8b95;--outline-v:#4f4048;--p:#ffaed2;--onp:#5e1139;--pc:#7c2652;--opc:#ffd8e8;--t:#b6f23c;--ont:#213600;--tc:#354e00;--on-tc:#d2ff6b;--pop:#ff2d95;--dot:rgba(255,45,149,.28);--secc:#5a3f4d;--on-secc:#ffd8e8;--r:28px;--font:Roboto,"Segoe UI",system-ui,-apple-system,sans-serif;--mono:ui-monospace,"Cascadia Code",Consolas,monospace}
+@media (prefers-color-scheme:light){:root{--bg:#fff8f9;--s1:#fceef3;--s2:#f6e8ee;--s3:#f0e2e8;--on:#22191e;--var:#514349;--out:#6b595f;--outline:#84737a;--outline-v:#d6c2c9;--p:#9c2c64;--onp:#fff;--pc:#ffd8e8;--opc:#3d0022;--t:#476800;--ont:#fff;--tc:#c9f56a;--on-tc:#131f00;--pop:#d6006e;--dot:rgba(214,0,110,.18);--secc:#fbd8e6;--on-secc:#3d0022}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px;height:100%}
-body{margin:0;background:var(--bg);color:var(--on);font:400 16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0)}
+body{margin:0;background:var(--bg);color:var(--on);font:400 16px/1.6 var(--font);padding-top:env(safe-area-inset-top,0)}
 body.reading-mode{font-family:Arial,Verdana,sans-serif;line-height:1.85;letter-spacing:.015em}
 body.reading-mode p,body.reading-mode li,body.reading-mode .quiz-answer{line-height:1.9;max-width:68ch}
 body.reading-mode .quiz-answer{padding:10px;border-radius:12px;background:var(--s2)}
@@ -40,7 +40,7 @@ a{color:var(--p)}
 :focus-visible{outline:3px solid var(--t);outline-offset:2px}
 .skip-link{position:absolute;left:12px;top:-60px;z-index:20;padding:10px 16px;border-radius:999px;background:var(--p);color:var(--onp);font-weight:700}
 .skip-link:focus{top:12px}
-.bar{position:sticky;top:env(safe-area-inset-top,0);z-index:9;margin:12px auto 0;max-width:1120px;width:calc(100% - 24px);background:var(--s2);border-radius:999px;display:flex;align-items:center;gap:6px;padding:6px 8px 6px 20px}
+.bar{position:sticky;top:env(safe-area-inset-top,0);z-index:9;margin:12px auto 0;max-width:1120px;width:calc(100% - 24px);background:var(--s1);border:1px solid var(--outline-v);border-radius:999px;display:flex;align-items:center;gap:6px;padding:6px 8px 6px 20px}
 .bar b{font-weight:900;font-size:1.05rem;margin-right:auto;white-space:nowrap}
 .bar nav{display:flex;gap:2px;overflow-x:auto}
 .bar a{color:var(--var);text-decoration:none;padding:8px 14px;border-radius:999px;font-weight:500;font-size:.92rem;white-space:nowrap}
@@ -280,12 +280,76 @@ body[data-view="inicio"] #top-link{display:none}
 .social-card p{margin:0 0 10px;color:var(--var);font-size:.9rem}
 .empty-state{grid-column:1/-1;color:var(--var);padding:18px;border-radius:16px;background:var(--s2)}
 @media(max-width:600px){.catalog-controls{grid-template-columns:1fr}.catalog-controls select{min-width:0}.study-controls select{width:100%}.module-card{padding:15px}.catalog-card{min-height:0}}
+
+/* FOXSEC Material 3 visual identity */
+.svg-sprite{position:absolute;overflow:hidden}
+.brand-mark{background:var(--bg);border-color:var(--pop);box-shadow:0 0 0 3px var(--s2)}
+.brand-mark svg{display:block;width:100%;height:100%;padding:2px}
+.bar{box-shadow:0 10px 32px rgba(0,0,0,.24);backdrop-filter:blur(16px)}
+.bar nav a{transition:color .15s,background-color .15s}
+.bar nav a:hover{background:var(--s3)}
+.bar nav a.on{color:var(--on-secc)}
+.nav-indicator{background:var(--secc)}
+.global-search input{border:1px solid var(--outline-v);background:var(--s2)}
+.global-search input:focus{border-color:var(--p)}
+main{max-width:1100px}
+.hero{gap:16px}
+.hero-hub .big{min-height:420px;border:1px solid var(--outline-v);border-radius:32px 88px 32px 32px;background:var(--s2);box-shadow:0 18px 48px rgba(255,45,149,.1)}
+.hero-hub .big::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--dot) 1.4px,transparent 1.8px);background-size:9px 9px;-webkit-mask-image:linear-gradient(115deg,#000 0%,transparent 68%);mask-image:linear-gradient(115deg,#000 0%,transparent 68%);pointer-events:none;z-index:0}
+.hero-hub .big::after{inset:0;background:linear-gradient(90deg,var(--s2) 28%,color-mix(in srgb,var(--s2) 84%,transparent) 56%,transparent 100%);opacity:1;border-radius:inherit;width:auto;height:auto;pointer-events:none;z-index:1}
+.hero-copy{z-index:2;width:59%;padding:38px 0 38px 42px}
+.hero-copy h1{margin:8px 0 18px;font-size:clamp(3.2rem,7.2vw,5.6rem);line-height:1;font-weight:900;letter-spacing:.015em}
+.hero-copy p{position:relative;max-width:42ch;margin:0 0 24px;color:var(--var);font-size:1.08rem}
+.hero-kicker{background:var(--s3);color:var(--t);font:500 .8rem/1.5 var(--mono);letter-spacing:.02em;text-transform:none}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;width:100%;overflow:hidden;pointer-events:none}
+.glitch::before{color:var(--pop);clip-path:inset(0 0 52% 0);transform:translateX(-2px)}
+.glitch::after{color:var(--t);clip-path:inset(52% 0 0 0);transform:translateX(2px)}
+@media(prefers-reduced-motion:no-preference){.glitch::before{animation:foxsec-glitch-a 9s infinite steps(1)}.glitch::after{animation:foxsec-glitch-b 9s infinite steps(1)}}
+@keyframes foxsec-glitch-a{0%,94%,100%{transform:translateX(-2px)}95%{transform:translateX(-5px)}97%{transform:translateX(1px)}}
+@keyframes foxsec-glitch-b{0%,94%,100%{transform:translateX(2px)}96%{transform:translateX(5px)}98%{transform:translateX(-1px)}}
+.monitor.hero-art{position:absolute;inset:50% 28px auto auto;z-index:2;display:grid;place-items:center;width:min(31%,270px);height:auto;aspect-ratio:1;transform:translateY(-50%);border:2px solid var(--outline);border-radius:20px;background:var(--bg);box-shadow:6px 6px 0 var(--pop)}
+.monitor svg{width:78%;height:78%;image-rendering:pixelated}
+.hero-hub .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:999px;overflow:hidden;transition:filter .15s,transform .15s}
+.hero-hub .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.hero-hub .btn.t{background:var(--secc);color:var(--on-secc);box-shadow:none}
+.hero-hub .btn:focus-visible{outline:3px solid var(--t);outline-offset:3px}
+.hero-hub .side{gap:14px}
+.hero-hub .stat{min-height:116px;border:1px solid var(--outline-v);border-radius:20px;background:var(--s1)}
+.hero-hub .stat strong{color:var(--p)}
+.hero-hub .stat span{color:var(--var)}
+.hero-hub .safe{position:relative;border:1px solid var(--t);border-radius:16px;background:var(--tc);color:var(--on-tc);box-shadow:4px 4px 0 var(--pop)}
+.hero-hub .safe b{display:block;margin-bottom:4px;color:var(--t);font:700 .78rem var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.hub-section-title{margin-top:42px}
+.hub-section-title h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.featured-visuals{gap:16px}
+.visual-card{border:1px solid var(--outline-v);border-radius:24px}
+.tile{border:1px solid var(--outline-v);background:var(--s1)}
+.tile:nth-child(4n+3){background:var(--s1);color:var(--on)}
+.tile:hover,.tile:nth-child(4n+3):hover{background:var(--s2);border-color:var(--p);color:var(--on)}
+.tile-icon{background:var(--tc);color:var(--on-tc)}
+.tile:nth-child(3n+2) .tile-icon{background:var(--secc);color:var(--on-secc)}
+.home-about{border:1px solid var(--outline-v);background:var(--s1)}
+@media(max-width:900px){.hero-hub .big{grid-column:span 7}.hero-hub .side{grid-column:span 5}.hero-copy{width:66%;padding-left:30px}.monitor.hero-art{width:min(30%,220px);right:18px}}
+@media(max-width:650px){.hero-hub .big,.hero-hub .side{grid-column:span 12}.hero-hub .big{min-height:390px;border-radius:28px 68px 28px 28px}.hero-copy{width:64%;padding:28px 0 28px 24px}.hero-copy h1{font-size:clamp(2.8rem,12vw,4.2rem)}.hero-copy p{max-width:34ch;font-size:1rem}.monitor.hero-art{width:min(26%,150px);right:14px}.hero-hub .side{grid-template-columns:1fr 1fr}.hero-hub .safe{grid-column:span 2}}
+@media(prefers-reduced-motion:reduce){.glitch::before,.glitch::after{display:none}.hero-hub .btn{transition:none}}
 </style>
 </head>
 <body data-view="home">
+<svg class="svg-sprite" width="0" height="0" aria-hidden="true">
+<symbol id="fox" viewBox="0 0 32 32" shape-rendering="crispEdges">
+<polygon points="3,31 3,15 6,9 10,6 22,6 26,9 29,15 29,31" fill="var(--bg)" stroke="var(--pop)" stroke-width="1"/>
+<polygon points="7,10 7,2 13,7" fill="var(--pop)"/><polygon points="25,10 25,2 19,7" fill="var(--pop)"/>
+<polygon points="9,9 9,5 12,8" fill="var(--bg)"/><polygon points="23,9 23,5 20,8" fill="var(--bg)"/>
+<polygon points="8,16 11,12 21,12 24,16 22,24 16,28 10,24" fill="var(--on)"/>
+<polygon points="5,20 9,17 9,23" fill="var(--pop)"/><polygon points="27,20 23,17 23,23" fill="var(--pop)"/>
+<rect x="10" y="16" width="4" height="2" fill="var(--t)"/><rect x="18" y="16" width="4" height="2" fill="var(--t)"/>
+<rect x="15" y="23" width="2" height="2" fill="var(--bg)"/>
+</symbol>
+</svg>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <header class="bar">
-<b><a class="brand-link" href="#inicio" aria-label="FOXSEC, inicio"><span class="brand-mark"><img src="assets/foxsec-logo.jpg" alt="" width="40" height="40"></span>FOXSEC</a></b>
+<b><a class="brand-link" href="#inicio" aria-label="FOXSEC, inicio"><span class="brand-mark"><svg aria-hidden="true"><use href="#fox"></use></svg></span>FOXSEC</a></b>
 <nav aria-label="Principal">
 <span class="nav-indicator" id="nav-indicator" aria-hidden="true"></span>
 <a href="#inicio" data-route="inicio" aria-current="page"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>Inicio</a>
@@ -304,8 +368,8 @@ body[data-view="inicio"] #top-link{display:none}
 <main id="contenido">
 <div class="home-dashboard" id="inicio">
 <div class="hero hero-hub">
- <div class="card big"><div class="hero-copy"><span class="hero-kicker">Ciberseguridad en español</span><h1>Aprende. Practica. Protege.</h1><p>Tu hub gratuito para explorar ciberseguridad desde cero: aprende con una ruta clara, practica en laboratorios seguros y construye tu portafolio.</p><a class="btn" href="#ruta">Explorar la ruta</a><a class="btn t" href="#herramientas">Ver herramientas</a></div><img class="hero-art" src="assets/foxsec-pixel-workspace.jpg" alt="Ilustración pixel art de una persona aprendiendo ciberseguridad en su estación de trabajo"></div>
- <div class="side"><div class="card stat"><strong id="n1">0</strong><span>herramientas explicadas</span></div><div class="card stat"><strong id="n2">0</strong><span>términos en el glosario</span></div><div class="safe"><b>Práctica ética.</b> Usa todo solo en equipos propios, laboratorios o con permiso por escrito.</div></div>
+ <div class="card big"><div class="hero-copy"><span class="hero-kicker">&gt; ciberseguridad_en_español</span><h1><span class="glitch" data-text="FOXSEC">FOXSEC</span></h1><p>Aprende. Practica. Protege. Explora ciberseguridad desde cero, practica en laboratorios seguros y construye tu portafolio técnico.</p><a class="btn" href="#ruta">Explorar la ruta</a><a class="btn t" href="#herramientas">Ver herramientas</a></div><div class="monitor hero-art" role="img" aria-label="Mascota original de FOXSEC: un zorro pixelado"><svg aria-hidden="true"><use href="#fox"></use></svg></div></div>
+ <div class="side"><div class="card stat"><strong id="n1">0</strong><span>herramientas explicadas</span></div><div class="card stat"><strong id="n2">0</strong><span>términos en el glosario</span></div><div class="safe" role="note"><b>Práctica ética.</b> Usa todo solo en equipos propios, laboratorios o con permiso por escrito.</div></div>
 </div>
 <div class="hub-section-title"><h2>Explora FOXSEC</h2><p>Entra en una sección para abrir su vista completa.</p></div>
 <div class="featured-visuals" aria-label="Áreas destacadas">
