@@ -13,7 +13,7 @@ Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, pr
 - Glosario interactivo y hojas de referencia de Nmap, Linux y puertos de red.
 - Marco legal dominicano e internacional, estándares de cumplimiento y protocolo ético-legal para auditorías.
 - Inicio tipo dashboard con vistas detalladas por módulo, navegación por hash, búsqueda global y diseño adaptado a móviles.
-- Ilustraciones proporcionadas para el proyecto en `assets/`.
+- Ilustraciones proporcionadas para el proyecto en `assets/`; se cargan localmente, sin hotlinks externos.
 
 Los catálogos incluyen buscador y filtros. Los enlaces a certificaciones llevan a proveedores oficiales cuando están disponibles; precios, versiones, requisitos y ofertas gratuitas pueden cambiar, así que verifícalos antes de inscribirte.
 
