@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ciberseguridad en español: ruta, glosario y hojas de referencia</title>
+<meta name="description" content="Recursos gratuitos para aprender ciberseguridad desde cero, en español: ruta de aprendizaje, glosario y hojas de referencia.">
+<style>
+:root{
+  --bg:#10202b; --surface:#172b38; --line:#2a4252; --text:#e6edf1; --muted:#9fb3c0;
+  --accent:#5bc0be; --warm:#f0b429; --code:#0b1720;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f5f8fa; --surface:#ffffff; --line:#cfdbe3; --text:#14222c; --muted:#4b6272; --accent:#0b7a78; --warm:#8a5a00; --code:#eaf0f4; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+header.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{max-width:860px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.nav-in strong{font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;margin-right:auto}
+.nav-in a{color:var(--muted);text-decoration:none;font-size:.95rem}
+.nav-in a:hover{color:var(--text)}
+main{max-width:860px;margin:0 auto;padding:0 20px 60px}
+.hero{padding:64px 0 36px}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.1;margin:0 0 18px;letter-spacing:-.01em;max-width:16ch}
+.hero p{max-width:60ch;color:var(--muted);font-size:1.1rem;margin:0 0 12px}
+.hero .note{border-left:3px solid var(--warm);padding-left:14px;color:var(--text);font-size:1rem}
+section{padding:38px 0;border-top:1px solid var(--line)}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:1.9rem;margin:0 0 8px}
+.lead{color:var(--muted);max-width:62ch;margin:0 0 22px}
+ol.path{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:14px}
+ol.path li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 16px 62px;position:relative}
+ol.path li::before{content:counter(s);position:absolute;left:18px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:700}
+ol.path h3{margin:0 0 4px;font-size:1.1rem}
+ol.path p{margin:0 0 6px;color:var(--muted)}
+ol.path .for{color:var(--text)}
+input[type=search]{width:100%;max-width:420px;padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;margin-bottom:16px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+summary{cursor:pointer;padding:12px 16px;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--accent)}
+details[open] summary::after{content:"−"}
+details div{padding:0 16px 14px;color:var(--muted)}
+details div b{color:var(--text)}
+.ref{margin-bottom:26px}
+.ref h3{margin:0 0 4px;font-size:1.25rem}
+.ref p.d{color:var(--muted);margin:0 0 12px;max-width:62ch}
+.cmd{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin-bottom:10px;overflow-x:auto}
+.cmd code{font:.92rem/1.5 ui-monospace,"Cascadia Code",Consolas,monospace;color:var(--warm);white-space:pre}
+.cmd span{display:block;color:var(--muted);font-size:.92rem;margin-top:4px}
+.warn{background:var(--surface);border:1px solid var(--warm);border-radius:8px;padding:12px 16px;margin:0 0 18px}
+footer{max-width:860px;margin:0 auto;padding:26px 20px 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="nav"><nav class="nav-in" aria-label="Principal">
+  <strong>Ciberseguridad en español</strong>
+  <a href="#ruta">Ruta</a><a href="#glosario">Glosario</a><a href="#referencias">Referencias</a><a href="#acerca">Acerca</a>
+</nav></header>
+
+<main>
+<div class="hero">
+  <h1>Aprende ciberseguridad desde cero, en español.</h1>
+  <p>Una ruta ordenada, un glosario con palabras sencillas y hojas de referencia para tener a mano. Cada tema explica qué es y para qué sirve.</p>
+  <p class="note">Todo lo que aparece aquí se debe practicar solo en equipos propios, en laboratorios de práctica o con permiso por escrito.</p>
+</div>
+
+<section id="ruta">
+  <h2>Ruta de aprendizaje</h2>
+  <p class="lead">Sigue el orden. Cada paso te prepara para el siguiente. Con sesiones cortas y constantes avanzas más que con una maratón.</p>
+  <ol class="path">
+    <li><h3>Redes</h3><p>Cómo se comunican los equipos: direcciones IP, puertos, DNS y protocolos como HTTP y SSH.</p><p class="for">Sirve para entender qué se ataca y qué se protege.</p></li>
+    <li><h3>Linux y la terminal</h3><p>Moverte por carpetas, leer archivos, manejar permisos y procesos.</p><p class="for">Sirve porque casi todas las herramientas de seguridad corren en Linux.</p></li>
+    <li><h3>Seguridad web</h3><p>Las vulnerabilidades más comunes: inyección SQL, XSS e IDOR.</p><p class="for">Sirve para encontrar y corregir fallos en aplicaciones web.</p></li>
+    <li><h3>Herramientas básicas</h3><p>Nmap para escanear, Burp Suite para analizar tráfico web, Wireshark y tcpdump para ver paquetes.</p><p class="for">Sirve para pasar de la teoría a la práctica.</p></li>
+    <li><h3>Práctica guiada</h3><p>Laboratorios legales como Hack The Box (Starting Point y Academy) y OWASP Juice Shop.</p><p class="for">Sirve para practicar sin riesgo y sin tocar sistemas ajenos.</p></li>
+    <li><h3>Defensa y respuesta a incidentes</h3><p>Endurecer sistemas, revisar registros y actuar cuando algo sale mal.</p><p class="for">Sirve para proteger y para investigar, no solo para atacar.</p></li>
+  </ol>
+</section>
+
+<section id="glosario">
+  <h2>Glosario</h2>
+  <p class="lead">Palabras que vas a escuchar todo el tiempo, explicadas sin tecnicismos.</p>
+  <input type="search" id="buscar" placeholder="Buscar un término…" aria-label="Buscar en el glosario">
+  <div id="lista">
+    <details><summary>Vulnerabilidad</summary><div><b>Qué es:</b> un fallo en un sistema o programa. <b>Para qué importa:</b> es la puerta por la que alguien podría entrar o hacer daño.</div></details>
+    <details><summary>Exploit</summary><div><b>Qué es:</b> el método o código que aprovecha una vulnerabilidad. <b>Para qué importa:</b> explica por qué conviene actualizar el software.</div></details>
+    <details><summary>CVE</summary><div><b>Qué es:</b> un número único que identifica una vulnerabilidad conocida. <b>Para qué importa:</b> permite buscarla y saber si te afecta.</div></details>
+    <details><summary>Phishing</summary><div><b>Qué es:</b> un engaño, casi siempre por correo o mensaje, para que entregues datos o hagas clic en un enlace falso. <b>Para qué importa:</b> es la forma de ataque más común.</div></details>
+    <details><summary>Ransomware</summary><div><b>Qué es:</b> un programa que cifra tus archivos y pide dinero para devolverlos. <b>Para qué importa:</b> las copias de seguridad son la mejor defensa.</div></details>
+    <details><summary>Malware</summary><div><b>Qué es:</b> cualquier programa hecho para dañar o espiar. <b>Para qué importa:</b> incluye virus, troyanos y ransomware.</div></details>
+    <details><summary>Firewall</summary><div><b>Qué es:</b> un filtro que decide qué conexiones entran y salen. <b>Para qué importa:</b> bloquea tráfico que no debería pasar.</div></details>
+    <details><summary>Autenticación en dos pasos (2FA)</summary><div><b>Qué es:</b> pedir algo más que la contraseña, como un código en el celular. <b>Para qué importa:</b> aunque roben tu clave, no pueden entrar.</div></details>
+    <details><summary>Hash</summary><div><b>Qué es:</b> una huella única que se calcula a partir de un dato. <b>Para qué importa:</b> sirve para guardar contraseñas y comprobar que un archivo no cambió.</div></details>
+    <details><summary>OSINT</summary><div><b>Qué es:</b> investigar usando solo información pública. <b>Para qué importa:</b> es el primer paso de muchas investigaciones.</div></details>
+    <details><summary>Red team y blue team</summary><div><b>Qué es:</b> el red team simula ataques y el blue team defiende. <b>Para qué importa:</b> juntos mejoran la seguridad de una organización.</div></details>
+    <details><summary>DFIR</summary><div><b>Qué es:</b> análisis forense digital y respuesta a incidentes. <b>Para qué importa:</b> permite saber qué pasó y contenerlo.</div></details>
+    <details><summary>Hardening</summary><div><b>Qué es:</b> reforzar un sistema quitando lo innecesario y ajustando su configuración. <b>Para qué importa:</b> reduce los puntos por donde pueden atacarlo.</div></details>
+  </div>
+</section>
+
+<section id="referencias">
+  <h2>Hojas de referencia</h2>
+  <p class="lead">Comandos frecuentes con una línea que explica qué hace cada uno.</p>
+  <p class="warn"><b>Antes de escanear:</b> usa Nmap solo en tu red, en laboratorios de práctica o con autorización escrita. Escanear equipos ajenos puede ser ilegal.</p>
+
+  <div class="ref">
+    <h3>Nmap</h3>
+    <p class="d">Escanea una red para ver qué equipos están conectados y qué puertos tienen abiertos.</p>
+    <div class="cmd"><code>nmap -sn 192.168.1.0/24</code><span>Descubre qué equipos están activos en la red, sin escanear puertos.</span></div>
+    <div class="cmd"><code>nmap 192.168.1.10</code><span>Escanea los 1000 puertos más comunes de un equipo.</span></div>
+    <div class="cmd"><code>nmap -sV 192.168.1.10</code><span>Detecta qué servicio y versión corre en cada puerto abierto.</span></div>
+    <div class="cmd"><code>nmap -sC -sV -oN resultado.txt 192.168.1.10</code><span>Usa scripts básicos, detecta versiones y guarda el resultado en un archivo.</span></div>
+    <div class="cmd"><code>nmap -p- 192.168.1.10</code><span>Revisa los 65535 puertos. Tarda más, pero no deja nada fuera.</span></div>
+  </div>
+
+  <div class="ref">
+    <h3>Linux: terminal básica</h3>
+    <p class="d">Los comandos que más vas a usar en Kali y en cualquier servidor.</p>
+    <div class="cmd"><code>pwd</code><span>Muestra en qué carpeta estás.</span></div>
+    <div class="cmd"><code>ls -la</code><span>Lista archivos, incluidos los ocultos, con sus permisos.</span></div>
+    <div class="cmd"><code>cd /ruta/carpeta</code><span>Entra a otra carpeta.</span></div>
+    <div class="cmd"><code>cat archivo.txt</code><span>Muestra el contenido de un archivo.</span></div>
+    <div class="cmd"><code>grep "texto" archivo.txt</code><span>Busca una palabra dentro de un archivo.</span></div>
+    <div class="cmd"><code>chmod 600 archivo</code><span>Deja el archivo legible solo para su dueño.</span></div>
+    <div class="cmd"><code>ip a</code><span>Muestra las direcciones IP de tus interfaces de red.</span></div>
+    <div class="cmd"><code>ss -tulpn</code><span>Muestra qué puertos tiene abiertos tu equipo y qué programa los usa.</span></div>
+  </div>
+</section>
+
+<section id="acerca">
+  <h2>Acerca de este sitio</h2>
+  <p class="lead">Un proyecto comunitario hecho por BLACKFOX08, estudiante de ciberseguridad desde República Dominicana. Está en construcción y crece con lo que voy aprendiendo. Si ves un error o quieres sugerir un tema, abre un issue en el repositorio.</p>
+</section>
+</main>
+
+<footer>Contenido educativo. Úsalo de forma ética y legal. <!-- Agrega aquí tus enlaces de GitHub y LinkedIn --></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('buscar');
+  var items=document.querySelectorAll('#lista details');
+  q.addEventListener('input',function(){
+    var t=q.value.toLowerCase().trim();
+    items.forEach(function(d){
+      d.style.display=d.textContent.toLowerCase().indexOf(t)>-1?'':'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>
