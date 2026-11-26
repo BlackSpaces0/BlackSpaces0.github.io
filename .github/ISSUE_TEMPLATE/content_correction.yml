@@ -1,0 +1,34 @@
+name: Corrección o sugerencia de contenido
+description: Propón una corrección, fuente o tema educativo.
+title: "[Contenido]: "
+labels:
+  - content
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Página, módulo o término
+      placeholder: "Módulo 3 — Criptografía"
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Corrección o propuesta
+      description: Describe el cambio sugerido y por qué mejoraría el contenido.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Fuente de referencia
+      description: Incluye una fuente fiable y su licencia si aplica.
+    validations:
+      required: false
+  - type: checkboxes
+    id: ethics
+    attributes:
+      label: Confirmación
+      options:
+        - label: La propuesta es educativa y no dirige actividades contra sistemas sin autorización.
+          required: true

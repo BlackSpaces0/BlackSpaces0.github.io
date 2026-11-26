@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Guía para contribuir
+    url: https://github.com/BlackSpaces0/BlackSpaces0.github.io/blob/main/CONTRIBUTING.md
+    about: Lee las pautas antes de proponer cambios.

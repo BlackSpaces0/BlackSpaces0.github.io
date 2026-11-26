@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#ffb3b6" opacity=".22"/>
+    </pattern>
+    <linearGradient id="glow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#732f36"/>
+      <stop offset="1" stop-color="#271f20"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#161112"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <path d="M0 0h1200v630H0z" fill="url(#glow)" opacity=".42"/>
+  <path d="M0 475c210-125 320-95 510-18s383 87 690-52v225H0z" fill="#1f1819"/>
+  <rect x="778" y="106" width="312" height="376" rx="44" fill="#1f1819" stroke="#a08c8d" stroke-width="3"/>
+  <circle cx="934" cy="294" r="125" fill="#161112" stroke="#ffb3b6" stroke-width="5"/>
+  <path d="m842 285-12-112 95 57h18l95-57-12 112 8 32c0 72-57 127-145 127s-145-55-145-127z" fill="#ffb3b6"/>
+  <path d="m859 229-5-29 54 34zm150 0 5-29-54 34z" fill="#732f36"/>
+  <path d="m842 302 56-46h72l56 46-18 83-74 45-74-45z" fill="#271f20"/>
+  <path d="m865 315 47-27h27v43h-74zm138 0-47-27h-27v43h74z" fill="#e9c176"/>
+  <path d="m923 374 11-11 11 11-11 16z" fill="#ffb3b6"/>
+  <path d="M906 402h56l-28 17z" fill="#efe0e0"/>
+  <path d="M88 98h120" stroke="#e9c176" stroke-width="8" stroke-linecap="round"/>
+  <text x="88" y="157" fill="#e9c176" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5">CIBERSEGURIDAD EN ESPAÑOL</text>
+  <text x="78" y="315" fill="#efe0e0" font-family="Arial, sans-serif" font-size="116" font-weight="900" letter-spacing="2">FOXSEC</text>
+  <text x="88" y="370" fill="#d7c2c3" font-family="Arial, sans-serif" font-size="30">Aprende. Practica. Protege.</text>
+  <rect x="88" y="420" width="446" height="2" fill="#a08c8d" opacity=".65"/>
+  <text x="88" y="464" fill="#ffb3b6" font-family="Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="2">RUTA · HERRAMIENTAS · GLOSARIO · PRÁCTICA ÉTICA</text>
+  <text x="88" y="544" fill="#d7c2c3" font-family="Arial, sans-serif" font-size="20">blackspaces0.github.io</text>
+</svg>
