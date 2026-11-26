@@ -26,3 +26,5 @@ El catálogo no incluye definiciones de INCIBE: no se pudo determinar de forma f
 ## Programa
 
 `course.json` contiene el esquema y los títulos de lecciones facilitados por el usuario para los módulos 2–10. Los seis nombres del módulo 1 son propuestas editoriales porque no se proporcionaron títulos oficiales. Las preguntas son ejercicios originales de práctica; no son preguntas oficiales de certificación.
+
+`quiz-bank.json` amplía los quizzes con preguntas educativas originales de FOXSEC. Los quizzes contienen al menos 30 preguntas por módulo; el examen final selecciona 50 preguntas al azar, cinco por módulo. No se redistribuyen bancos de preguntas oficiales.

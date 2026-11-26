@@ -292,7 +292,7 @@ body[data-view="inicio"] #top-link{display:none}
 <h3 style="margin:28px 0 10px">Plan semana por semana</h3><div class="card wrap"><table><thead><tr><th>Semana</th><th>Tema</th><th>Práctica</th></tr></thead><tbody id="plan"></tbody></table></div>
 <h3 style="margin:28px 0 10px">Repaso espaciado</h3><div class="chips" id="rep"></div></section>
 
-<section id="curso" class="detail-section"><h2>Curso: fundamentos a práctica avanzada</h2><p class="lead">Programa organizado en los 10 módulos que compartiste. Marca lecciones completadas y practica con un quiz por módulo; el progreso se guarda en este dispositivo.</p>
+<section id="curso" class="detail-section"><h2>Curso: fundamentos a práctica avanzada</h2><p class="lead">Programa organizado en los 10 módulos que compartiste. Marca lecciones completadas, responde al menos 30 preguntas por módulo y completa el examen final de 50 preguntas. El progreso se guarda en este dispositivo.</p>
 <p class="study-note"><b>Alcance del contenido:</b> los nombres de lecciones de los módulos 2–10 se conservan según tu lista. El módulo 1 no incluía los seis títulos; aquí se muestran seis propuestas de fundamentos, no títulos oficiales. Los quizzes son de práctica, no exámenes de certificación.</p>
 <div class="study-controls"><label for="course-filter">Mostrar:</label><select id="course-filter"><option value="all">Todos los módulos</option><option value="required">Módulos principales</option><option value="optional">Módulos complementarios</option></select><span id="course-progress-text" class="module-progress" aria-live="polite"></span></div>
 <div class="study-progress" role="progressbar" aria-label="Progreso general del curso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="course-progress-bar"></span></div>
@@ -643,12 +643,16 @@ function initCourse(){
   $("course-progress-text").textContent=done+" de "+lessons+" lecciones completadas";$("course-progress-bar").style.width=percent+"%";document.querySelector('[aria-label="Progreso general del curso"]').setAttribute("aria-valuenow",percent)
  }
  function renderFinalExam(modules){
-  var exam=$("course-final"),questions=[];modules.forEach(function(module){module.quiz.forEach(function(question){questions.push({module:module.title,question:question})})});
-  exam.replaceChildren(textNode("h3","Examen general de práctica · "+questions.length+" preguntas"),textNode("p","Repaso acumulativo de los módulos. Es una autoevaluación educativa, no un examen oficial ni una credencial."));
+  var exam=$("course-final"),questions=[];
+  exam.replaceChildren(textNode("h3","Examen final de módulos · 50 preguntas"),textNode("p","En cada intento se seleccionan cinco preguntas al azar de cada módulo. Es una autoevaluación educativa, no un examen oficial ni una credencial."));
   var start=textNode("button","Iniciar examen");start.type="button";start.className="btn";exam.appendChild(start);
   var form=document.createElement("div");form.hidden=true;var result=textNode("p","","quiz-result");result.setAttribute("aria-live","polite");exam.append(form,result);
-  if(progress.scores.final)result.textContent="Último resultado guardado: "+progress.scores.final.correct+"/"+progress.scores.final.total+".";
+  if(progress.scores.final&&progress.scores.final.total===50)result.textContent="Último resultado guardado: "+progress.scores.final.correct+"/"+progress.scores.final.total+".";
   start.addEventListener("click",function(){
+   var pools=modules.map(function(module){var pool=module.quiz.slice();for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),temp=pool[i];pool[i]=pool[j];pool[j]=temp}return pool.map(function(question){return {module:module.title,question:question}})});
+   questions=[];var round=0,added=0;
+   do{added=0;pools.forEach(function(pool){if(round<pool.length&&questions.length<50){questions.push(pool[round]);added++}});round++}while(questions.length<50&&added);
+   if(questions.length!==50){result.textContent="No hay suficientes preguntas para iniciar el examen. Recarga el curso o avisa para revisar el banco.";return}
    form.replaceChildren();questions.forEach(function(item,index){var field=document.createElement("fieldset");field.appendChild(textNode("legend",(index+1)+". ["+item.module+"] "+item.question.question));item.question.options.forEach(function(option,optionIndex){var label=textNode("label","","quiz-answer"),radio=document.createElement("input");radio.type="radio";radio.name="final-"+index;radio.value=optionIndex;label.append(radio,document.createTextNode(" "+option));field.appendChild(label)});form.appendChild(field)});
    var submit=textNode("button","Calificar examen");submit.type="button";submit.className="btn";form.appendChild(submit);form.hidden=false;result.textContent="";
    submit.addEventListener("click",function(){var correct=0,answered=0;Array.prototype.forEach.call(form.querySelectorAll("fieldset"),function(field,index){var selected=field.querySelector("input:checked");if(selected){answered++;if(Number(selected.value)===questions[index].question.answer)correct++}});var percent=Math.round(correct*100/questions.length);result.textContent="Resultado: "+correct+"/"+questions.length+" ("+percent+"%). "+(percent>=80?"Meta de práctica alcanzada.":"Repasa los módulos con errores y vuelve a intentarlo.")+" Respondidas: "+answered+"/"+questions.length+".";progress.scores.final={correct:correct,total:questions.length};save()})
@@ -671,10 +675,10 @@ function initCourse(){
     question.options.forEach(function(option,oi){var label=textNode("label","","quiz-answer"),radio=document.createElement("input");radio.type="radio";radio.name="quiz-"+module.number+"-"+qi;radio.value=oi;label.append(radio,document.createTextNode(" "+option));field.appendChild(label)});quiz.appendChild(field)
    });
    quiz.append(submit,result);details.appendChild(quiz);
-   if(progress.scores[module.number])result.textContent="Último resultado guardado: "+progress.scores[module.number].correct+"/"+progress.scores[module.number].total+" correctas.";
+   if(progress.scores[module.number]&&progress.scores[module.number].total===module.quiz.length)result.textContent="Último resultado guardado: "+progress.scores[module.number].correct+"/"+progress.scores[module.number].total+" correctas.";
    submit.addEventListener("click",function(){
     var correct=0,answered=0;Array.prototype.forEach.call(quiz.querySelectorAll("fieldset"),function(field,qi){var selected=field.querySelector("input:checked");var feedback=field.querySelector(".quiz-feedback");if(feedback)feedback.remove();var explanation=textNode("p",module.quiz[qi].explanation,"quiz-feedback");field.appendChild(explanation);if(selected){answered++;if(Number(selected.value)===module.quiz[qi].answer)correct++}});
-    result.textContent="Resultado: "+correct+"/"+module.quiz.length+" correctas · "+answered+" respondidas. Revisa las explicaciones y vuelve a intentarlo.";
+    result.textContent="Resultado: "+correct+"/"+module.quiz.length+" correctas · "+answered+" respondidas. Revisa las respuestas correctas y vuelve a intentarlo.";
     progress.scores[module.number]={correct:correct,total:module.quiz.length};save()
    });
    var completed=module.lessons.filter(function(_,i){return progress.lessons[module.number+"-"+i]}).length;count.textContent=completed+"/"+module.lessons.length+" lecciones";
@@ -683,7 +687,12 @@ function initCourse(){
   updateProgress(modules)
  }
  filter.addEventListener("change",function(){if(window.courseModules)render(window.courseModules)});
- fetch("data/course.json").then(function(response){if(!response.ok)throw new Error("HTTP "+response.status);return response.json()}).then(function(data){if(!data.modules||!data.modules.length)throw new Error("El programa no contiene módulos");window.courseModules=data.modules;render(data.modules);renderFinalExam(data.modules);data.modules.forEach(function(module,index){dynamicSearchItems.push({title:"Módulo "+module.number+" · "+module.title,content:module.lessons.join(" ")+" "+module.quiz.map(function(q){return q.question+" "+q.options.join(" ")}).join(" "),type:"course",section:"curso",index:index})})}).catch(function(error){console.error("Error al cargar el curso FOXSEC:",error);host.replaceChildren(textNode("p","No se pudo cargar el programa. Comprueba tu conexión y recarga la página.","empty-state"))})
+ Promise.all(["data/course.json","data/quiz-bank.json"].map(function(url){return fetch(url).then(function(response){if(!response.ok)throw new Error(url+" HTTP "+response.status);return response.json()})})).then(function(payload){
+  var data=payload[0],bank=payload[1];if(!data.modules||!data.modules.length)throw new Error("El programa no contiene módulos");
+  data.modules.forEach(function(module){var rows=bank[String(module.number)];if(!Array.isArray(rows))throw new Error("Falta el banco de preguntas del módulo "+module.number);rows.forEach(function(row,rowIndex){if(!Array.isArray(row)||row.length!==8||row.some(function(value){return typeof value!=="string"}))throw new Error("Pregunta inválida en módulo "+module.number+", fila "+(rowIndex+1));[0,4].forEach(function(offset,variant){var correct=row[offset+1],answer=(module.number+rowIndex+variant)%3,options=[];options[answer]=correct;options[(answer+1)%3]=row[offset+2];options[(answer+2)%3]=row[offset+3];module.quiz.push({question:row[offset],options:options,answer:answer,explanation:"La respuesta correcta es «"+correct+"»."})})});if(module.quiz.length<30)throw new Error("El módulo "+module.number+" tiene menos de 30 preguntas")});
+  if(data.modules.reduce(function(total,module){return total+module.quiz.length},0)<50)throw new Error("El banco no tiene suficientes preguntas para el examen final");
+  window.courseModules=data.modules;render(data.modules);renderFinalExam(data.modules);data.modules.forEach(function(module,index){dynamicSearchItems.push({title:"Módulo "+module.number+" · "+module.title,content:module.lessons.join(" ")+" "+module.quiz.map(function(q){return q.question+" "+q.options.join(" ")}).join(" "),type:"course",section:"curso",index:index})})
+ }).catch(function(error){console.error("Error al cargar el curso FOXSEC:",error);host.replaceChildren(textNode("p","No se pudo cargar el programa o el banco de preguntas. Comprueba tu conexión y recarga la página.","empty-state"))})
 }
 function renderLanguageGuide(){
  var entries=[
