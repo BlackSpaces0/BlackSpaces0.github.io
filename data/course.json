@@ -1,0 +1,263 @@
+{
+  "modules": [
+    {
+      "number": 1,
+      "title": "Fundamentos de ciberseguridad",
+      "required": true,
+      "status": "Contenido sugerido: el usuario compartió que el módulo tiene 6 lecciones, pero no incluyó sus títulos oficiales. Confirma los nombres con el programa de origen.",
+      "lessons": [
+        "Conceptos: activo, amenaza, vulnerabilidad y riesgo",
+        "Confidencialidad, integridad y disponibilidad (CIA)",
+        "Identidades, autenticación y control de acceso",
+        "Redes, servicios y puertos esenciales",
+        "Higiene digital y actualización segura",
+        "Práctica ética, alcance y autorización"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué describe mejor una vulnerabilidad?",
+          "options": ["Una debilidad que podría ser aprovechada", "El daño económico de un incidente", "Una copia de seguridad"],
+          "answer": 0,
+          "explanation": "Una vulnerabilidad es una debilidad; una amenaza puede aprovecharla y producir un impacto."
+        },
+        {
+          "question": "¿Qué principio protege los datos de cambios no autorizados?",
+          "options": ["Disponibilidad", "Integridad", "Confidencialidad"],
+          "answer": 1,
+          "explanation": "Integridad protege la exactitud y completitud frente a alteraciones no autorizadas."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Gobernanza y Gestión de Riesgos en Ciberseguridad",
+      "required": true,
+      "lessons": [
+        "Gobernanza y Gestión de Riesgos en Ciberseguridad",
+        "Principios de Gobernanza",
+        "Ciberseguridad más allá del ámbito técnico",
+        "Criptografía Aplicada y PKI",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué debe definir la gobernanza de ciberseguridad?",
+          "options": ["Responsabilidades, objetivos y supervisión", "Solo las herramientas que comprará el equipo", "Únicamente reglas para contraseñas"],
+          "answer": 0,
+          "explanation": "La gobernanza alinea responsabilidades, objetivos, recursos y supervisión con el riesgo de la organización."
+        },
+        {
+          "question": "¿Qué componente de PKI vincula una identidad con una clave pública?",
+          "options": ["Un certificado digital", "Un hash de contraseña", "Un registro DNS"],
+          "answer": 0,
+          "explanation": "Un certificado digital firmado por una autoridad certificadora asocia una identidad con una clave pública."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Protección de Activos y Criptografía Fundamental",
+      "required": true,
+      "lessons": [
+        "Protección de Activos y Criptografía Fundamental",
+        "Pilares de la protección CIA",
+        "Fundamentos de Criptografía",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Cuál es un uso adecuado de una función hash criptográfica?",
+          "options": ["Comprobar integridad de un archivo", "Recuperar el texto original de forma reversible", "Cifrar tráfico sin una clave"],
+          "answer": 0,
+          "explanation": "Un hash permite comparar huellas para detectar cambios; no es cifrado reversible."
+        },
+        {
+          "question": "¿Qué diferencia caracteriza al cifrado asimétrico?",
+          "options": ["Usa un par de claves pública y privada", "Usa siempre una contraseña compartida", "No puede apoyar firmas digitales"],
+          "answer": 0,
+          "explanation": "El cifrado asimétrico usa claves relacionadas: una pública y otra privada."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Seguridad de Redes y Comunicaciones Esenciales",
+      "required": true,
+      "lessons": [
+        "Seguridad de Redes y Comunicaciones Esenciales",
+        "Principios de Diseño Seguro",
+        "Protocolos Seguros",
+        "Dispositivos de Seguridad",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué aporta la segmentación de red?",
+          "options": ["Limita el movimiento entre zonas y reduce el alcance de incidentes", "Garantiza que ningún equipo sea vulnerable", "Reemplaza la autenticación"],
+          "answer": 0,
+          "explanation": "La segmentación crea límites que ayudan a contener incidentes y aplicar políticas por zona."
+        },
+        {
+          "question": "¿Cuál es la función principal de un firewall?",
+          "options": ["Aplicar reglas al tráfico de red", "Cifrar automáticamente todos los archivos", "Emitir certificados para cualquier sitio"],
+          "answer": 0,
+          "explanation": "Un firewall permite o bloquea tráfico según reglas y contexto configurados."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Operaciones de Seguridad Básicas",
+      "required": true,
+      "lessons": [
+        "Operaciones de Seguridad Básicas",
+        "Registro y Monitorización",
+        "Conceptos Operacionales",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Por qué sincronizar la hora de los sistemas?",
+          "options": ["Para correlacionar eventos en una investigación", "Para ocultar eventos antiguos", "Para evitar toda alerta falsa"],
+          "answer": 0,
+          "explanation": "Timestamps consistentes permiten reconstruir y correlacionar secuencias de eventos."
+        },
+        {
+          "question": "¿Qué es una alerta falsa positiva?",
+          "options": ["Una actividad legítima clasificada como sospechosa", "Un ataque confirmado sin evidencia", "Una copia de log cifrada"],
+          "answer": 0,
+          "explanation": "Un falso positivo ocurre cuando una detección señala actividad legítima como maliciosa."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Herramientas de Automatización",
+      "required": true,
+      "lessons": [
+        "Herramientas de Automatización",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué práctica hace más segura una automatización de respuesta?",
+          "options": ["Probarla, limitar permisos y registrar acciones", "Darle privilegios máximos y evitar logs", "Ejecutarla en producción sin validación"],
+          "answer": 0,
+          "explanation": "Pruebas, privilegio mínimo y trazabilidad limitan errores y facilitan auditoría."
+        },
+        {
+          "question": "¿Qué debería hacer un script que procesa entradas no confiables?",
+          "options": ["Validar entradas y manejar errores explícitamente", "Ejecutarlas como comandos", "Ignorar valores inesperados"],
+          "answer": 0,
+          "explanation": "Validación y manejo explícito de errores evitan comportamiento inesperado e inseguros."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Seguridad de Sistemas, Aplicaciones y Nube",
+      "required": true,
+      "lessons": [
+        "Seguridad de Sistemas, Aplicaciones y Nube",
+        "Seguridad del Sistema Operativo y en el Desarrollo de Software",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué es una práctica de hardening?",
+          "options": ["Deshabilitar servicios innecesarios y aplicar configuración segura", "Instalar todos los paquetes disponibles", "Compartir cuentas administrativas"],
+          "answer": 0,
+          "explanation": "Hardening reduce superficie de ataque mediante configuración segura, actualizaciones y servicios mínimos."
+        },
+        {
+          "question": "¿Qué concepto de nube define quién protege cada componente?",
+          "options": ["Modelo de responsabilidad compartida", "Cifrado simétrico", "Balanceo de carga"],
+          "answer": 0,
+          "explanation": "El proveedor y el cliente comparten responsabilidades de seguridad, que varían según el servicio."
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Seguridad en Nube y Tecnologías Emergentes",
+      "required": false,
+      "lessons": [
+        "Seguridad en Nube",
+        "Tendencias y Tecnologías Emergentes en Ciberseguridad",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué ayuda a evitar exposición accidental de almacenamiento en nube?",
+          "options": ["Revisar políticas de acceso y configuración de forma continua", "Usar nombres de bucket difíciles de adivinar", "Desactivar registros de auditoría"],
+          "answer": 0,
+          "explanation": "El control de acceso y la revisión de configuración son esenciales; la ofuscación del nombre no es control de seguridad."
+        },
+        {
+          "question": "¿Cómo conviene evaluar una nueva tecnología de seguridad?",
+          "options": ["Con casos de uso, riesgos, privacidad y pruebas controladas", "Adoptándola sin revisión por ser nueva", "Asumiendo que reemplaza todos los controles"],
+          "answer": 0,
+          "explanation": "La evaluación debe considerar beneficios, limitaciones, privacidad e integración con controles existentes."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Habilidades Blandas para Ciberseguridad",
+      "required": false,
+      "lessons": [
+        "Intro Habilidades Blandas",
+        "Creatividad e innovación",
+        "Liderazgo e Influencia",
+        "Toma de Decisiones Bajo Incertidumbre",
+        "Comunicación efectiva y Asertividad",
+        "Quiz Transversal",
+        "Inteligencia Emocional",
+        "Trabajo en Equipo y Colaboración",
+        "Resolución de Problemas",
+        "Gestión del Tiempo y Productividad Personal",
+        "Quiz Especifico"
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué debe priorizar un reporte de incidente para una audiencia ejecutiva?",
+          "options": ["Impacto, riesgo, decisiones requeridas y próximos pasos", "Cada comando usado en orden", "Solo terminología técnica"],
+          "answer": 0,
+          "explanation": "Una comunicación ejecutiva clara conecta el incidente con impacto, opciones y decisiones."
+        },
+        {
+          "question": "¿Qué práctica ayuda a tomar decisiones bajo incertidumbre?",
+          "options": ["Separar hechos, supuestos y nivel de confianza", "Presentar una hipótesis como hecho", "Esperar certeza absoluta antes de contener un riesgo urgente"],
+          "answer": 0,
+          "explanation": "Distinguir evidencia, supuestos y confianza permite decidir y revisar la decisión con nueva información."
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Inglés para Tecnología y Ciberseguridad",
+      "required": false,
+      "lessons": [
+        "Unit 1: Grammar Review in Action",
+        "Unit 2: Grammar in Action Writing, reading, listening and speaking",
+        "Unit 3: Writing your résumé, preparing for an interview and LinkedIn",
+        "Unit 4: Talking about programming languages, tools and Team Work",
+        "Quiz"
+      ],
+      "quiz": [
+        {
+          "question": "En un informe técnico en inglés, ¿qué verbo comunica una observación sin exagerar una conclusión?",
+          "options": ["observed", "guaranteed", "proved everything"],
+          "answer": 0,
+          "explanation": "“Observed” describe lo visto; la evidencia debe respaldar cualquier conclusión posterior."
+        },
+        {
+          "question": "¿Qué debe incluir un currículum técnico para respaldar una habilidad?",
+          "options": ["Un proyecto, resultado o evidencia verificable", "Solo una lista extensa de herramientas", "Contraseñas de los laboratorios"],
+          "answer": 0,
+          "explanation": "Proyectos y resultados concretos demuestran la habilidad sin revelar secretos ni datos sensibles."
+        }
+      ]
+    }
+  ]
+}

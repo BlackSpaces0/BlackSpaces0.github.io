@@ -7,15 +7,18 @@ Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, pr
 ## Contenido
 
 - Ruta de aprendizaje y plan de estudio de 11 semanas.
-- Herramientas, páginas de práctica, sistemas operativos y lenguajes.
-- Canales educativos, libros, películas, series y anime.
-- Certificaciones e insignias con enlaces a sus páginas oficiales.
-- Glosario interactivo y hojas de referencia de Nmap, Linux y puertos de red.
-- Marco legal dominicano e internacional, estándares de cumplimiento y protocolo ético-legal para auditorías.
+- Curso interactivo de 10 módulos, seguimiento local de lecciones y quizzes de práctica por módulo.
+- Catálogo de más de 600 herramientas/plataformas y glosario de más de 1.000 términos, con filtros, paginación y búsqueda global.
+- Páginas de práctica, sistemas operativos, guía de lenguajes vigentes y heredados, arquitectura de redes y canales educativos.
+- Más de 50 lecturas, películas, series y anime; certificaciones e insignias con enlaces a sus proveedores.
+- Hojas de referencia de Nmap, Linux y puertos de red.
+- Marco legal dominicano e internacional, tabla de referencia por jurisdicción, estándares y protocolo ético-legal para auditorías.
 - Inicio tipo dashboard con vistas detalladas por módulo, navegación por hash, búsqueda global y diseño adaptado a móviles.
 - Ilustraciones proporcionadas para el proyecto en `assets/`; se cargan localmente, sin hotlinks externos.
 
-Los catálogos incluyen buscador y filtros. Los enlaces a certificaciones llevan a proveedores oficiales cuando están disponibles; precios, versiones, requisitos y ofertas gratuitas pueden cambiar, así que verifícalos antes de inscribirte.
+Los catálogos se cargan desde `data/` y usan filtros, paginación y fuentes atribuidas. Consulta [data/SOURCES.md](data/SOURCES.md) para procedencia y licencias. Parte del glosario está originalmente en inglés y se etiqueta como tal; no se presenta como traducción. Los títulos oficiales de las lecciones de los módulos 2–10 se conservan según lo aportado por el usuario; los títulos del módulo 1 se identifican como propuestas.
+
+Los enlaces a certificaciones llevan a proveedores oficiales cuando están disponibles. Precios, versiones, requisitos, becas y ofertas gratuitas pueden cambiar o depender del país; verifica todo en la página del proveedor antes de inscribirte. Los quizzes son material de práctica y no preguntas oficiales.
 
 ## Publicación
 
