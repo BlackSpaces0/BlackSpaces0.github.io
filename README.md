@@ -1,6 +1,6 @@
-# Ciberseguridad en español
+# FOXSEC — Ciberseguridad en español
 
-Guía de aprendizaje gratuita para estudiar ciberseguridad de forma progresiva, practicar en entornos autorizados y construir un portafolio técnico.
+Hub gratuito de aprendizaje para estudiar ciberseguridad de forma progresiva, practicar en entornos autorizados y construir un portafolio técnico.
 
 **Sitio:** [blackspaces0.github.io](https://blackspaces0.github.io/)
 
@@ -12,6 +12,8 @@ Guía de aprendizaje gratuita para estudiar ciberseguridad de forma progresiva, 
 - Certificaciones e insignias con enlaces a sus páginas oficiales.
 - Glosario interactivo y hojas de referencia de Nmap, Linux y puertos de red.
 - Marco legal dominicano e internacional, estándares de cumplimiento y protocolo ético-legal para auditorías.
+- Inicio tipo dashboard con vistas detalladas por módulo, navegación por hash, búsqueda global y diseño adaptado a móviles.
+- Ilustraciones proporcionadas para el proyecto en `assets/`.
 
 Los catálogos incluyen buscador y filtros. Los enlaces a certificaciones llevan a proveedores oficiales cuando están disponibles; precios, versiones, requisitos y ofertas gratuitas pueden cambiar, así que verifícalos antes de inscribirte.
 
