@@ -1,0 +1,34 @@
+name: Reportar un error
+description: Informa de un fallo, enlace roto o problema de funcionamiento.
+title: "[Error]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Gracias por ayudar a mejorar FOXSEC. No incluyas contraseñas, tokens ni datos personales."
+  - type: input
+    id: location
+    attributes:
+      label: Sección o URL afectada
+      placeholder: "Por ejemplo: Curso > Módulo 2"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Pasos para reproducir
+      description: Describe solo lo necesario para que otra persona pueda observar el problema.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Qué esperabas y qué ocurrió
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Navegador y dispositivo
+      placeholder: "Por ejemplo: Firefox en Android"
+    validations:
+      required: false

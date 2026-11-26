@@ -1,0 +1,26 @@
+name: Comentario de accesibilidad
+description: Reporta una barrera o sugiere un ajuste de lectura, teclado o móvil.
+title: "[Accesibilidad]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Comparte solo la barrera que observaste. No tienes que revelar diagnósticos ni información personal."
+  - type: input
+    id: location
+    attributes:
+      label: Sección donde ocurre
+    validations:
+      required: true
+  - type: textarea
+    id: barrier
+    attributes:
+      label: Qué resultó difícil
+      description: Por ejemplo, teclado, lectura, contraste, audio o tamaño de pantalla.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Qué cambio podría ayudar
+    validations:
+      required: false

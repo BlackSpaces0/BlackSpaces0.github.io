@@ -1,0 +1,82 @@
+{
+  "1": {
+    "goal": "Distingue activo, amenaza, vulnerabilidad e impacto antes de decidir qué proteger.",
+    "example": "Una base de datos es un activo. Una contraseña expuesta es una vulnerabilidad. Quien la usa sin permiso es una amenaza. El daño posible es el impacto.",
+    "challenge": "Un equipo deja de recibir actualizaciones y aparece una vulnerabilidad conocida. ¿Cuál es la acción inicial más adecuada?",
+    "options": ["Evaluar exposición y aplicar la actualización probada", "Publicar la dirección del equipo", "Desactivar los registros"],
+    "answer": 0,
+    "feedback": "Evalúa el riesgo y corrige con un cambio probado; luego verifica que el servicio siga funcionando."
+  },
+  "2": {
+    "goal": "La gobernanza asigna responsabilidades y decisiones; la gestión de riesgos prioriza qué tratar.",
+    "example": "Si una aplicación maneja datos financieros, la organización define quién acepta el riesgo, quién aplica controles y cuándo se revisa el resultado.",
+    "challenge": "Un riesgo alto no tiene responsable asignado. ¿Qué mejora primero la gobernanza?",
+    "options": ["Nombrar un propietario y acordar un plan de tratamiento", "Borrar el riesgo del registro", "Comprar una herramienta sin definir el problema"],
+    "answer": 0,
+    "feedback": "Un propietario coordina decisiones y seguimiento; las herramientas se eligen según el riesgo."
+  },
+  "3": {
+    "goal": "Confidencialidad limita quién ve los datos, integridad protege sus cambios y disponibilidad permite usarlos a tiempo.",
+    "example": "Un hash puede ayudar a detectar cambios en un archivo. No cifra el archivo ni permite recuperar el original.",
+    "challenge": "¿Qué ayuda a comprobar que un archivo descargado no cambió?",
+    "options": ["Comparar su hash con un valor confiable", "Cambiarle el nombre", "Comprimirlo dos veces"],
+    "answer": 0,
+    "feedback": "Si los hashes calculados con el mismo algoritmo coinciden, hay evidencia de integridad; usa una fuente confiable para el hash esperado."
+  },
+  "4": {
+    "goal": "Diseña redes con límites de confianza y permite solo los flujos que cada servicio necesita.",
+    "example": "Una red de invitados no necesita acceder directamente a los servidores internos. El firewall puede permitir Internet y bloquear esa ruta interna.",
+    "challenge": "¿Qué regla inicial reduce exposición entre zonas?",
+    "options": ["Denegar por defecto y permitir flujos justificados", "Permitir todo el tráfico entre VLANs", "Desactivar el registro del firewall"],
+    "answer": 0,
+    "feedback": "Denegar por defecto reduce acceso innecesario. Documenta cada excepción y su propietario."
+  },
+  "5": {
+    "goal": "Una alerta es una señal para investigar, no una prueba automática de ataque.",
+    "example": "Un inicio de sesión desde una ubicación nueva puede ser legítimo o sospechoso. Revisa identidad, hora, dispositivo y actividad relacionada.",
+    "challenge": "¿Qué hace un analista al recibir una alerta de inicio inusual?",
+    "options": ["Validar evidencia y contexto antes de escalar o cerrar", "Afirmar que la cuenta fue comprometida sin revisar", "Eliminar los registros para reducir ruido"],
+    "answer": 0,
+    "feedback": "El triaje combina evidencia y contexto; conserva los registros y documenta la decisión."
+  },
+  "6": {
+    "goal": "Automatiza tareas repetibles con permisos mínimos, entradas validadas y resultados auditables.",
+    "example": "Un script de respuesta puede aislar una máquina de laboratorio, registrar la acción y detenerse si no reconoce el identificador del equipo.",
+    "challenge": "¿Cómo pruebas un script que podría bloquear una cuenta?",
+    "options": ["Usar datos de prueba y un entorno controlado antes de habilitarlo", "Ejecutarlo de inmediato sobre todas las cuentas", "Ocultar sus errores"],
+    "answer": 0,
+    "feedback": "Las pruebas controladas y el alcance limitado reducen el impacto de errores de automatización."
+  },
+  "7": {
+    "goal": "Reduce la superficie de ataque y valida seguridad en código, configuración y dependencias.",
+    "example": "Una aplicación web debe validar permisos en el servidor; ocultar un botón en la interfaz no impide que alguien llame directamente a la API.",
+    "challenge": "¿Qué controla que una persona solo consulte sus propios registros?",
+    "options": ["Autorización en el servidor para cada recurso solicitado", "Ocultar el identificador en la página", "Cambiar el color del enlace"],
+    "answer": 0,
+    "feedback": "La autorización debe verificarse del lado servidor en cada solicitud y según la identidad autenticada."
+  },
+  "8": {
+    "goal": "En la nube, responsabilidades cambian según el servicio; configura identidades, datos y registros de forma consciente.",
+    "example": "El proveedor protege la infraestructura física. El cliente sigue teniendo que revisar los permisos y la exposición de sus propios datos.",
+    "challenge": "Un almacenamiento en la nube quedó público por error. ¿Qué paso es prioritario?",
+    "options": ["Restringir el acceso, evaluar exposición y preservar registros", "Cambiar solo el nombre del almacenamiento", "Borrar los logs de auditoría"],
+    "answer": 0,
+    "feedback": "Contén la exposición, determina qué pudo verse y conserva evidencia para la investigación."
+  },
+  "9": {
+    "goal": "La comunicación efectiva separa hechos, hipótesis e impacto, y deja claros los próximos pasos.",
+    "example": "En un traspaso de turno, anota la alerta, la evidencia revisada, lo que falta confirmar y quién hará el siguiente paso.",
+    "challenge": "¿Qué ayuda más a una persona que recibe un incidente a mitad de investigación?",
+    "options": ["Un resumen de evidencia, decisiones y tareas pendientes", "Una lista de opiniones sin contexto", "Un mensaje que solo dice «revísalo»"],
+    "answer": 0,
+    "feedback": "Un traspaso estructurado conserva continuidad y evita repetir o perder trabajo."
+  },
+  "10": {
+    "goal": "Usa inglés técnico sencillo: describe observaciones con precisión y evita afirmar más de lo que demuestra la evidencia.",
+    "example": "“We observed repeated failed logins” describe una observación. No afirma por sí sola que una cuenta fue comprometida.",
+    "challenge": "¿Qué frase comunica una observación sin exagerar la conclusión?",
+    "options": ["We observed repeated failed logins.", "The attacker definitely stole all data.", "Everything is completely safe."],
+    "answer": 0,
+    "feedback": "Describe primero lo observado; presenta las conclusiones como hipótesis hasta verificarlas."
+  }
+}

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Hoja de ruta
+    url: https://github.com/BlackSpaces0/BlackSpaces0.github.io/blob/main/ROADMAP.md
+    about: Revisa las prioridades del proyecto antes de proponer una función grande.
+  - name: Cómo contribuir
+    url: https://github.com/BlackSpaces0/BlackSpaces0.github.io/blob/main/CONTRIBUTING.md
+    about: Lee las pautas para contenido, fuentes, licencias y accesibilidad.

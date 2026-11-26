@@ -1,0 +1,59 @@
+name: Proponer contenido o traducción
+description: Sugiere un recurso, término, microlección, corrección o traducción.
+title: "[Contenido]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Prioriza fuentes oficiales o primarias. No propongas bancos de exámenes, material sin permiso ni pruebas contra sistemas ajenos."
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Tipo de aporte
+      options:
+        - Recurso o herramienta
+        - Término del glosario
+        - Microlección o ejercicio
+        - Corrección factual
+        - Traducción
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Nombre o sección
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Propuesta y valor educativo
+      description: Usa frases claras y señala para qué nivel o módulo sirve.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Fuente primaria u oficial
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: Autor y licencia o permiso de uso
+      description: Si es contenido original, indica que lo creaste tú.
+    validations:
+      required: true
+  - type: input
+    id: reviewed
+    attributes:
+      label: Fecha en que verificaste la fuente
+      placeholder: "AAAA-MM-DD"
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Idioma original y, si aplica, idioma de la traducción
+    validations:
+      required: true
