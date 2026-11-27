@@ -1,29 +1,32 @@
 # Cómo contribuir a FOXSEC
 
-Gracias por ayudar a mejorar este recurso educativo. Puedes reportar errores, proponer contenido o mejorar documentación mediante un Issue o un pull request.
+¡Gracias por querer mejorar este proyecto! Todo aporte ayuda, desde corregir una tilde hasta sugerir un término nuevo.
 
-## Reportar un problema o sugerir contenido
+## Formas de ayudar
 
-1. Revisa los Issues existentes para evitar duplicados.
-2. Usa la plantilla de error o de corrección de contenido que corresponda.
-3. Incluye la página o archivo, una descripción clara y los pasos para reproducir el problema si aplica.
-4. No publiques contraseñas, tokens, datos personales ni información sensible.
+- **Reportar un error o un enlace roto:** abre un *issue* con la plantilla "Error de contenido".
+- **Sugerir un término, herramienta o lección:** usa la plantilla "Sugerencia".
+- **Proponer un cambio directo:** haz un *fork*, crea una rama, edita y abre un *pull request*.
 
-Para enlaces rotos, indica el texto del enlace y la sección donde aparece. Para sugerencias de contenido, añade fuentes fiables y señala su licencia cuando corresponda.
+## Reglas de contenido
 
-## Enviar cambios
+- **Español claro y sencillo.** Cada tema debe explicar qué es y para qué sirve, con frases cortas.
+- **Fuentes.** Cita de dónde sale la información. No copies textos protegidos por derechos de autor: redáctalos con tus palabras.
+- **Licencias.** Si agregas material de otra fuente, indica su licencia en `data/SOURCES.md`.
+- **Uso ético.** No se aceptan instrucciones para atacar sistemas ajenos. Todo ejemplo debe poder practicarse en equipos propios o en laboratorios autorizados.
+- **Sin datos personales.** No incluyas IP públicas, contraseñas, claves, cédulas ni capturas con información privada.
+- **Arte.** Solo imágenes propias o con licencia que permita su uso. No uses marcas ni personajes de terceros.
 
-1. Haz un fork y crea una rama con un nombre descriptivo.
-2. Mantén los cambios centrados en un solo objetivo y usa los patrones existentes.
-3. Comprueba los enlaces y revisa el resultado en escritorio y móvil.
-4. Abre un pull request con un resumen, las pruebas realizadas y capturas si el cambio visual las necesita.
+## Probar en tu equipo
 
-FOXSEC es un sitio estático, sin dependencias de servidor. No añadas librerías externas o servicios de terceros sin explicar por qué son necesarios.
+El sitio es estático. Desde la carpeta del proyecto:
 
-## Criterios de contenido
+```
+python3 -m http.server 8000
+```
 
-- El contenido debe ser educativo, claro y respetar las licencias y atribuciones de las fuentes.
-- Las prácticas de seguridad deben limitarse a equipos propios, laboratorios o sistemas con autorización explícita.
-- No incluyas instrucciones dirigidas a atacar sistemas ajenos, datos confidenciales, ni afirmaciones de afiliación o aval institucional.
-- Distingue las traducciones y adaptaciones del texto original, y no presentes material de práctica como preguntas oficiales de certificación.
-- Mantén la accesibilidad: texto alternativo útil para imágenes informativas, navegación por teclado y contraste legible.
+Abre `http://localhost:8000`. Los catálogos se cargan desde `data/`, así que no funcionan abriendo el archivo directamente.
+
+## Convivencia
+
+Trata a todas las personas con respeto. Las críticas se dirigen al contenido, no a quien lo escribió. Los comentarios ofensivos se eliminarán.

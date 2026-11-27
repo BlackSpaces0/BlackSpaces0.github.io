@@ -1,33 +1,26 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#161112">
-  <title>Página no encontrada · FOXSEC</title>
-  <link rel="icon" type="image/svg+xml" href="/assets/foxsec-icon.svg">
-  <style>
-    :root{color-scheme:dark;--bg:#161112;--surface:#1f1819;--text:#efe0e0;--muted:#d7c2c3;--accent:#ffb3b6;--on-accent:#561e24;--line:#a08c8d;--focus:#e9c176}
-    @media(prefers-color-scheme:light){:root{color-scheme:light;--bg:#fff8f7;--surface:#fbeeed;--text:#231919;--muted:#534343;--accent:#9a4047;--on-accent:#fff;--line:#857373;--focus:#6f5100}}
-    *{box-sizing:border-box}
-    body{min-height:100vh;margin:0;display:grid;place-items:center;padding:24px;background:var(--bg);color:var(--text);font:400 1rem/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
-    main{width:min(100%,680px);padding:clamp(28px,7vw,64px);border:1px solid var(--line);border-radius:28px;background:var(--surface)}
-    .brand{margin:0 0 36px;color:var(--accent);font-size:.9rem;font-weight:800;letter-spacing:.18em}
-    h1{margin:0;font-size:clamp(3.5rem,15vw,7rem);line-height:1;letter-spacing:-.06em}
-    h1 span{color:var(--accent)}
-    p{max-width:48ch;color:var(--muted)}
-    a{display:inline-flex;align-items:center;min-height:48px;margin-top:12px;padding:0 22px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none}
-    a:hover{filter:brightness(1.08)}
-    a:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
-  </style>
-</head>
-<body>
-  <main>
-    <p class="brand">FOXSEC</p>
-    <h1>4<span>0</span>4</h1>
-    <p>No encontramos esa página. Puede que el enlace haya cambiado o que la dirección esté mal escrita.</p>
-    <a href="/index.html#inicio">Volver al inicio</a>
-  </main>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light">
+<title>Página no encontrada · FOXSEC</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#150d13;--on-s:#f0dee6;--on-sv:#d4c1ca;--outline:#9d8b95;--p:#ffaed2;--on-p:#5e1139;--t:#b6f23c;--pop:#ff2d95;--font:Roboto,"Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:light){:root{--bg:#fff8f9;--on-s:#22191e;--on-sv:#514349;--outline:#84737a;--p:#9c2c64;--on-p:#fff;--t:#476800;--pop:#d6006e}}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--on-s);font:400 1rem/1.6 var(--font);padding:24px;text-align:center}
+:focus-visible{outline:3px solid var(--t);outline-offset:3px}main{max-width:520px}
+h1{font-size:clamp(5rem,26vw,9rem);line-height:1;margin:0;font-weight:900}
+.g{position:relative;display:inline-block}.g::before,.g::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;overflow:hidden}
+.g::before{color:var(--pop);clip-path:inset(0 0 52% 0);transform:translateX(-3px)}.g::after{color:var(--t);clip-path:inset(52% 0 0 0);transform:translateX(3px)}
+@media (prefers-reduced-motion:no-preference){.g::before{animation:a 8s infinite steps(1)}.g::after{animation:b 8s infinite steps(1)}}
+@keyframes a{0%,93%,100%{transform:translateX(-3px)}95%{transform:translateX(-7px)}97%{transform:translateX(1px)}}
+@keyframes b{0%,93%,100%{transform:translateX(3px)}96%{transform:translateX(7px)}98%{transform:translateX(-1px)}}
+.mono{font:500 .85rem ui-monospace,Consolas,monospace;color:var(--t);margin:0 0 8px}
+h2{font-size:1.5rem;font-weight:500;margin:12px 0 8px}p{color:var(--on-sv);margin:0 0 24px}
+.a{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.b{display:inline-flex;align-items:center;height:40px;padding:0 24px;border-radius:28px;font:500 .9rem var(--font);text-decoration:none}
+.f{background:var(--p);color:var(--on-p)}.o{color:var(--p);border:1px solid var(--outline)}
+</style></head><body><main>
+<p class="mono">&gt; error_404</p>
+<h1><span class="g" data-t="404">404</span></h1>
+<h2>Esta ruta no existe en FOXSEC</h2>
+<p>El enlace puede estar roto o la página cambió de lugar. Vuelve al inicio o revisa mis proyectos.</p>
+<div class="a"><a class="b f" href="/">Volver al inicio</a><a class="b o" href="/proyectos.html">Mis proyectos</a></div>
+</main></body></html>
